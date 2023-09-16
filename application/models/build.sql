@@ -3,7 +3,7 @@ use `foowikidb`;
 create table `users` (
     `userid` int primary key auto_increment,
     `username` varchar(100) unique not null, 
-    `user_password` varchar(32) not null
+    `user_password` varchar(100) not null
 );
 
 create table `dishes` (
@@ -16,7 +16,7 @@ create table `dishes` (
 );
 
 create table `session` (
-    `sessionid` varchar(32) primary key,
+    `sessionid` varchar(100) primary key,
     `userid` int not null,
     foreign key (userid) references users(userid)
 );

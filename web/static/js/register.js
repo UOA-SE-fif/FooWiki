@@ -26,7 +26,8 @@ function register() {
         success: function (data) {
             if (data.code == 0) {
                 alert("注册成功！");
-                window.location.href = "/login";
+                // 跳转到登录页面
+                window.location.href = "/";
             } else {
                 alert(data.message);
             }
