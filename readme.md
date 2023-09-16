@@ -8,10 +8,12 @@
     ├── config           #配置文件
     ├── core             #核心算法
     ├── models           #模型（与数据库设计相对应）
-    ├── routes           #路由
-    ├── static           #前端静态文件夹
-    │   └── bootstrap
-    └── templates        #Flask模版文件夹
+    └── routes           #路由
+└── web
+    ├── static           #静态文件
+    ├── node_modules     #npm依赖
+    └── templates        #模板文件
+
 ```
 
 ### 开发环境
