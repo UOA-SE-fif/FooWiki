@@ -16,6 +16,7 @@
 
 ### 开发环境
 
+- 安装依赖
 ```bash
 conda create -n FooWiki python=3.10
 conda activate FooWiki
@@ -25,6 +26,11 @@ pip install -r requirements.txt
 - 添加依赖到requirements.txt
 ```bash
 pip freeze > requirements.txt
+```
+
+- 安装npm依赖
+```bash
+npm install
 ```
 
 ### git使用

@@ -1,0 +1,4 @@
+{
+    "SQLALCHEMY_DATABASE_URI": "mysql://foowikiauth:FoowiKIAuth@localhost/foowikidb",
+    "SQLALCHEMY_TRACK_MODIFICATIONS": false
+}
