@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from routes import register_routes
 
 
 def create_app(test_config=None):
@@ -23,6 +24,8 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    register_routes(app)
 
     # a simple page that says hello
     @app.route('/hello')
