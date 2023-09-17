@@ -18,22 +18,30 @@
 
 ### 开发环境
 
-- 安装依赖
+- 安装python依赖
 ```bash
 conda create -n FooWiki python=3.10
 conda activate FooWiki
 pip install -r requirements.txt
 ```
 
-- 添加依赖到requirements.txt
+- 添加python依赖到requirements.txt
 ```bash
 pip freeze > requirements.txt
 ```
 
 - 安装npm依赖
 ```bash
+cd web
 npm install
 ```
+
+- mysql数据库配置
+```bash
+mysql://foowikiauth:FoowiKIAuth@localhost/foowikidb
+# mysql://用户名:密码@主机名/数据库名
+```
+![Alt text](readme_pic/image.png)
 
 ### git使用
 - 分支命名
