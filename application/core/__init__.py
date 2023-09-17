@@ -1,0 +1,1 @@
+from .crud.auth_user import register_user
