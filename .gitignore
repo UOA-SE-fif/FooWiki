@@ -163,3 +163,5 @@ cython_debug/
 #  Remove cache and logs from node.js
 **/node_modules/
 **/node_modules/**/.*
+
+.idea/
