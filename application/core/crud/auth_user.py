@@ -44,7 +44,7 @@ def login_user(username, password):
         # Todo: log, status code
         return 1
 
-
+# Todo: 移动到dishes_api.py
 def foods_dishes():
     """
     :return: 以列表形式返回关于菜品的数据
@@ -52,13 +52,6 @@ def foods_dishes():
     dishes = DishesBase.query.all()
     dish_list = []
     for dish in dishes:
-        dish_data = {
-            'dishid': dish.dishid,
-            'dishname': dish.dishname,
-            'describe': dish.describe,
-            'price': dish.price,
-            'shopname': dish.shopname,
-            'floor': dish.floor
-        }
+        dish_data = dish.dict()
         dish_list.append(dish_data)
     return jsonify(dish_list)
