@@ -52,6 +52,16 @@ class DishesBase(db.Model):  # 菜品基本信息
     shopname: Mapped[str] = mapped_column(String(100), nullable=False)
     floor: Mapped[int] = mapped_column(Integer, nullable=False)
 
+    def dict(self):
+        return {
+            'dishid': self.dishid,
+            'dishname': self.dishname,
+            'describe': self.describe,
+            'price': self.price,
+            'shopname': self.shopname,
+            'floor': self.floor
+        }
+
 
 class Session(db.Model):  # 用户登录状态
     """

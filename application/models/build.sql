@@ -1,4 +1,4 @@
-create database if not exists `foowikidb` default character set utf8 collate utf8_general_ci;
+create database if not exists `foowikidb`;
 use `foowikidb`;
 create table `users` (
     `userid` int primary key auto_increment,
