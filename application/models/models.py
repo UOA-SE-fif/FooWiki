@@ -1,11 +1,20 @@
-from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-db = SQLAlchemy()  # 创建数据库对象
+
+Base = declarative_base()
+# Base是所有数据库模型的基类。通过继承Base类，可以定义数据库模型类，并将其映射到数据库表。
+engine = create_engine("mysql+pymysql://root:markyan20040903@localhost:3306/mydatabase")
+# create_engine函数创建了一个数据库引擎对象，使用指定的数据库连接字符串
+# 在create_engine中，您应该填写适当的数据库连接字符串来连接到您的数据库。数据库连接字符串的确切格式取决于您使用的数据库类型和驱动程序。
+# 对于MySQL，engine = create_engine("mysql+pymysql://username:password@host:port/database")
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+# 创建了一个会话工厂，使用上述创建的数据库引擎对象作为参数。会话工厂用于创建数据库会话对象，用于执行数据库操作。
 
 
-class UserBase(db.Model):  # 用户基本信息
+class UserBase(Base):  # 用户基本信息
     """
     table:
         create table users (
@@ -15,8 +24,8 @@ class UserBase(db.Model):  # 用户基本信息
         );"""
 
     __tablename__ = "users"
-    userid: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    username: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
+    userid = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String(100), nullable=False, unique=True)
 
 
 class UserAuth(UserBase):  # 用户登录信息
@@ -28,10 +37,10 @@ class UserAuth(UserBase):  # 用户登录信息
             user_password varchar(32) not null
         );"""
 
-    user_password: Mapped[str] = mapped_column(String(32), nullable=False)
+    user_password = Column(String(32), nullable=False)
 
 
-class DishesBase(db.Model):  # 菜品基本信息
+class DishesBase(Base):  # 菜品基本信息
     """
     table:
         create table dishes (
@@ -45,25 +54,15 @@ class DishesBase(db.Model):  # 菜品基本信息
     """
 
     __tablename__ = "dishes"
-    dishid: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    dishname: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
-    describe: Mapped[str] = mapped_column(String(255))
-    price: Mapped[float] = mapped_column(Integer, nullable=False)
-    shopname: Mapped[str] = mapped_column(String(100), nullable=False)
-    floor: Mapped[int] = mapped_column(Integer, nullable=False)
-
-    def dict(self):
-        return {
-            'dishid': self.dishid,
-            'dishname': self.dishname,
-            'describe': self.describe,
-            'price': self.price,
-            'shopname': self.shopname,
-            'floor': self.floor
-        }
+    dishid = Column(Integer, primary_key=True, autoincrement=True)
+    dishname = Column(String(100), nullable=False, unique=True)
+    describe = Column(String(255))
+    price = Column(Float, nullable=False)
+    shopname = Column(String(100), nullable=False)
+    floor = Column(Integer, nullable=False)
 
 
-class Session(db.Model):  # 用户登录状态
+class Session(Base):  # 用户登录状态
     """
     table:
         create table session (
@@ -74,5 +73,15 @@ class Session(db.Model):  # 用户登录状态
     """
 
     __tablename__ = "session"
-    sessionid: Mapped[str] = mapped_column(String(32), primary_key=True)
-    userid: Mapped[int] = mapped_column(Integer, nullable=False)
+    sessionid = Column(String(32), primary_key=True)
+    userid = Column(Integer, ForeignKey("users.userid"))
+    user = relationship("UserBase")
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+

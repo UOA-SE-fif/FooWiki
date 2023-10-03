@@ -4,11 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d06724e-926c-44c4-b6e7-88e030a02d08" name="更改" comment="" />
+    <list default="true" id="3d06724e-926c-44c4-b6e7-88e030a02d08" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/application/core/crud/get_dishes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/routes/dishes_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/core/crud/auth_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/crud/auth_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/base_route.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/base_route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/test_route.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/user_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/user_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
     <envs>
@@ -59,6 +79,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dev__api__yhy",
+    "last_opened_file_path": "E:/Mark/Programming/GithubProject/FooWiki",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
@@ -70,6 +92,23 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Test1-run.py" type="Python.FastAPI">
+      <option name="file" value="E:\Mark\Programming\GithubProject\FooWiki\run.py" />
+      <module name="FooWiki" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\17835\.conda\envs\FooWiki_310\python.exe" />
+      <option name="SDK_NAME" value="FooWiki_310" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -80,6 +119,11 @@
       <updated>1695557426706</updated>
       <workItem from="1695557429581" duration="69000" />
       <workItem from="1695557506227" duration="726000" />
+      <workItem from="1696304663005" duration="734000" />
+      <workItem from="1696305533090" duration="40000" />
+      <workItem from="1696305622921" duration="566000" />
+      <workItem from="1696306203120" duration="6296000" />
+      <workItem from="1696315074544" duration="1635000" />
     </task>
     <servers />
   </component>
@@ -87,26 +131,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/dev_csf" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/feat--login-api" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -128,8 +152,32 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/dev_csf" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/feat--login-api" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FooWiki$run.coverage" NAME="run 覆盖结果" MODIFIED="1696316385980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FooWiki$__init__.coverage" NAME="__init__ 覆盖结果" MODIFIED="1696316247476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application" />
   </component>
 </project>

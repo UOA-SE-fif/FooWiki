@@ -1,23 +1,15 @@
 import os
-
-from flask import Flask
+from fastapi import FastAPI
 from .routes import register_routes
 from .config import config_dict
-from .models import db
-
+from .models import get_db
+from .models import Base
 
 def create_app(test_config=None):
     # create and configure the app
-    app = Flask(
-        __name__,
-        instance_relative_config=True,
-        template_folder="../web/templates",
-        static_folder="../web/static",
-    )
-    
-    app.config.from_mapping(config_dict)
-    db.init_app(app)
-
+    app = FastAPI()
+    app.config = config_dict
+    Base.init_app(app)
 
     # ensure the instance folder exists
     try:
@@ -28,7 +20,7 @@ def create_app(test_config=None):
     register_routes(app)
 
     # a simple page that says hello
-    @app.route("/hello")
+    @app.get("/hello")
     def hello():
         return "Hello, World!"
 

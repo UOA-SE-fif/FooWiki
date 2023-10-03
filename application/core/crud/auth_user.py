@@ -1,6 +1,7 @@
-from flask import jsonify
 from ...models import *
 import hashlib
+
+db = get_db()
 
 
 def register_user(username, password):
@@ -19,7 +20,6 @@ def register_user(username, password):
         db.session.commit()
         return 0
     except Exception as e:
-        # Todo: log, status code
         print(e)
         return 1
 
@@ -38,20 +38,7 @@ def login_user(username, password):
         if user.password == password:
             return 0
         else:
-            # Todo: log, status code
             return 1
     else:
-        # Todo: log, status code
         return 1
 
-# Todo: 移动到dishes_api.py
-def foods_dishes():
-    """
-    :return: 以列表形式返回关于菜品的数据
-    """
-    dishes = DishesBase.query.all()
-    dish_list = []
-    for dish in dishes:
-        dish_data = dish.dict()
-        dish_list.append(dish_data)
-    return jsonify(dish_list)
