@@ -1,7 +1,8 @@
-from ...models import *
+from ...models import SessionLocal
+from ...models.models import *
 import hashlib
 
-db = get_db()
+db = SessionLocal()
 
 
 def register_user(username, password):
@@ -16,8 +17,8 @@ def register_user(username, password):
     # 创建用户
     user = UserAuth(username=username, user_password=password)
     try:
-        db.session.add(user)
-        db.session.commit()
+        db.add(user)
+        db.commit()
         return 0
     except Exception as e:
         print(e)
@@ -33,7 +34,7 @@ def login_user(username, password):
     """
     # SHA256加密
     password = hashlib.sha256(password.encode("utf-8")).hexdigest()
-    user = UserAuth.query.filter_by(username=username).first()
+    user = db.query(UserAuth).filter(UserAuth.username == username).first()
     if user:
         if user.password == password:
             return 0
