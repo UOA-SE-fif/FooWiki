@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from application.models.database import Base
+from application.models.database import Base, SessionLocal
 
 
 class UserBase(Base):  # 用户基本信息

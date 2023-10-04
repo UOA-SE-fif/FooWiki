@@ -1,4 +1,3 @@
-from ...models import SessionLocal
 from ...models.models import *
 import hashlib
 

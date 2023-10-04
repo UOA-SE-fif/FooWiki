@@ -1,4 +1,5 @@
 from ...models import *
+from ...models.models import DishesBase
 
 db = SessionLocal()
 
