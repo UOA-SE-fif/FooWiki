@@ -41,3 +41,8 @@ class DishesBase(BaseModel):
     price: float
     shopname: str
     floor: int
+    type: str
+    satiety: int
+    vegetables: int
+    meat: int
+    
