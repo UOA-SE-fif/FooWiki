@@ -1,0 +1,24 @@
+
+.loginCard {
+  height: 510px;
+  width: 741px;
+  // center the card
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // card shadow
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  // card border radius
+  border-radius: 10px;
+  // padding inside the card
+  padding: 30px;
+  // background color
+  background-color: #ffffff;
+  input {
+    margin : 10px 0px;
+  }
+  button {
+    background-color: #ffc720;
+  }
+}

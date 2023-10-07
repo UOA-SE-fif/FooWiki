@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css'
+import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />

@@ -4,8 +4,19 @@ import Container from '../components/container'
 export default function Home() {
     return (
         <Container>
-            <h1>Hello world!</h1>
-            <Link href={"/register"}>Register</Link>
+            <h1>Welcome to FooWiki!</h1>
+            <ul className={"nav"}>
+                <li className={"nav-item"}>
+                    <Link href={"/login"}>
+                        login
+                    </Link>
+                </li>
+                <li className={"nav-item"}>
+                    <Link href={"/register"}>
+                        register
+                    </Link>
+                </li>
+            </ul>
         </Container>
     )
 }
