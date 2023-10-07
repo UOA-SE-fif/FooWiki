@@ -9,11 +9,14 @@ export default function Register() {
     let confirm_password = createRef()
 
     function register(){
+        if(username.current.value==""||password.current.value==""||confirm_password.current.value=="") {
+            alert("请输入完整的信息")
+            return
+        }
         if(password.current.value!==confirm_password.current.value){
             alert("两次输入的密码不一致")
             return
         }
-
 
         let data = {
             "userid": 0,
@@ -31,7 +34,15 @@ export default function Register() {
             },
             body:JSON.stringify(data)
         }).then(res=>{
+            return res.json()
+        }).then(res=>{
             console.log(res)
+            if(res.status==1){
+                alert("注册失败")
+            }else if(res.status==0){
+                alert("注册成功")
+                window.location.href="/"
+            }
         })
     }
 
