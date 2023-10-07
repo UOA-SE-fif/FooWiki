@@ -1,7 +1,9 @@
 import {createRef} from "react"
 export default function Dishes() {
     let floor = createRef()
-
+    let shop = createRef()
+    let priceLeft = createRef()
+    let priceRight = createRef()
 
     return (
         <div>
@@ -11,9 +13,15 @@ export default function Dishes() {
                     <option>2楼</option>
                     <option>3楼</option>
                 </select>
-                <input type="text" name="shop" id="shop" placeholder="商家"></input>
-                <input type="text" name="priceLeft" id="priceLeft" placeholder="最低价格"></input>
-                <input type="text" name="priceRight" id="priceRight" placeholder="最高价格"></input>
+
+                <select name="shop" id="shop" ref={shop}>
+                    <option>商家1</option>
+                    <option>商家2</option>
+                    <option>商家3</option>
+                    <option>商家4</option>
+                </select>
+                <input type="text" name="priceLeft" id="priceLeft" placeholder="最低价格" ref={priceLeft}></input>
+                <input type="text" name="priceRight" id="priceRight" placeholder="最高价格" ref={priceRight}></input>
             </div>
 
             <div>
