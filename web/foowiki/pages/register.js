@@ -56,5 +56,5 @@ export default function Register() {
             <button type="submit" name="Register" id="registerButton" onClick={register}>Register</button>
           </div>
       </div>
-  )
+    )
 }

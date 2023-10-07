@@ -1,4 +1,4 @@
-import {createRef} from "React"
+import {createRef} from "react"
 
 export default function Login(){
     let username = createRef()
@@ -7,7 +7,7 @@ export default function Login(){
     const URL = "http://127.0.0.1:5000"
 
     function login(){
-        if(username.current.value==""||password.current.value==""){
+        if(username.current.value===""||password.current.value===""){
             alert("请输入完整的信息")
             return
         }
@@ -24,15 +24,20 @@ export default function Login(){
             },
             body:JSON.stringify(data)
         })
+        .then(res=>res.json())
+        .then(res=>{
+            console.log(res)
+            }
+        )
     }
 
     return (
-        <div>
-          <div>
+        <div className="container">
+          <div className="col-sm-4 offset-4">
             <h1>login</h1>
-              <input type="text" name="Username" id="username" placeholder="Username" ref={username}></input>
-              <input type="password" name="Password" id="password" placeholder="Password" ref={password}></input>
-            <button type="submit" name="Register" id="registerButton" onClick={login}>Login</button>
+              <input className="form-control" type="text" name="Username" id="username" placeholder="Username" ref={username}></input>
+              <input className="form-control" type="password" name="Password" id="password" placeholder="Password" ref={password}></input>
+              <button className="btn" type="submit" name="Register" id="registerButton" onClick={login}>Login</button>
           </div>
       </div>
     )

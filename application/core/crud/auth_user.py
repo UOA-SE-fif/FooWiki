@@ -35,7 +35,7 @@ def login_user(username, password):
     password = hashlib.sha256(password.encode("utf-8")).hexdigest()
     user = db.query(UserAuth).filter(UserAuth.username == username).first()
     if user:
-        if user.password == password:
+        if user.user_password == password:
             return 0
         else:
             return 1
