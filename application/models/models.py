@@ -41,6 +41,10 @@ class DishesBase(Base):  # 菜品基本信息
             price float not null,
             shopname varchar(100) not null,
             floor int not null
+            type varchar(100) not null
+            satiety int not null
+            vegetables int not null
+            meat int not null
         );
     """
 
@@ -51,6 +55,10 @@ class DishesBase(Base):  # 菜品基本信息
     price = Column(Float, nullable=False)
     shopname = Column(String(100), nullable=False)
     floor = Column(Integer, nullable=False)
+    type = Column(String(100), nullable=False)
+    satiety = Column(Integer, nullable=False)
+    vegetables = Column(Integer, nullable=False)
+    meat = Column(Integer, nullable=False)
 
 
 class Session(Base):  # 用户登录状态

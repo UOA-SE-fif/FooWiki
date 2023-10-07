@@ -163,7 +163,6 @@ cython_debug/
 #  Remove cache and logs from node.js
 **/node_modules/
 **/node_modules/**/.*
-.idea
-.idea/workspace.xml
-.idea/workspace.xml
+.idea/
+##.idea/workspace.xml
 *.xml
