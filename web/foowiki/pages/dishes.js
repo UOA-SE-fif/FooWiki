@@ -1,9 +1,28 @@
 import {createRef} from "react"
+import {getSortedPostsData} from 'posts'
+
+//存放菜品的全局变量
+let dishes = []
+const URL = "http://localhost:5000"
 export default function Dishes() {
     let floor = createRef()
     let shop = createRef()
     let priceLeft = createRef()
     let priceRight = createRef()
+
+    fetch(`${URL}/dishesInfo`,{
+            method:"GET",
+            mode:"cors",
+            headers:{
+                'Content-Type':"application/json"
+            }
+        }).then(res=>{
+            return res.json()
+        }).then(res=>{
+            console.log(res)
+            dishes = [...dishes,...res.foods]
+            console.log(dishes)
+        })
 
     return (
         <div>
