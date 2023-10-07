@@ -16,10 +16,6 @@ def foods_dishes():
             describe=dish.describe,
             price=dish.price,
             shopname=dish.shopname,
-            floor=dish.floor,
-            type=dish.type,
-            satiety=dish.satiety,
-            vegetables = dish.vegetables,
-            meat = dish.meat
+            floor=dish.floor
         ))
     return dish_list

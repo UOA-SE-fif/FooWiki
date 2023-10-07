@@ -30,7 +30,7 @@ export default function Dishes({ data }){
      }).then(res=>res.json())
          .then(res=>{
              console.log(res)
-             dishes = res
+             dishes = res.dishes
              //初始化菜品列表
              let dishesTable = dishes.map((item,index)=>{
                  return(<tr key={index}>
@@ -94,10 +94,9 @@ export function change(){
     let shopname = shop.current.value
     let minPrice = priceLeft.current.value
     let maxPrice = priceRight.current.value
-    console.log(floorValue," ",shopname," ",!minPrice," ",!maxPrice)
 
-    //最大值不应超过最小值
-    if(maxPrice&&minPrice&&maxPrice<minPrice)return
+
+    console.log(floorValue," ",shopname," ",minPrice," ",maxPrice)
 
     for(let i=0;i<dishes.length;i++){
         let dish = dishes[i]
