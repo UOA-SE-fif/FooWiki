@@ -26,7 +26,8 @@ export default function Login(){
         })
         .then(res=>res.json())
         .then(res=>{
-            console.log(res)
+            alert("登录成功")
+            window.location.href="/dishes"
             }
         )
     }
