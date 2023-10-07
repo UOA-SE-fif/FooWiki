@@ -1,4 +1,4 @@
-from ...models import models, schemas
+from ...models import models, schemas, SessionLocal
 
 db = SessionLocal()
 

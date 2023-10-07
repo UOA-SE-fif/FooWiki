@@ -21,8 +21,8 @@ async def register(schema: schemas.UserAuth):
 
 @router_user.put('/login')
 async def login(schema: schemas.UserAuth):
-    username = schema.form.get('username')
-    password = schema.form.get('password')
+    username = schema.username
+    password = schema.user_password
     status = login_user(username, password)
     if status == 0:
         response = schemas.LoginResponse(status=status, message='登录成功')
