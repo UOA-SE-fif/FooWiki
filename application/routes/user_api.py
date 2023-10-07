@@ -13,9 +13,9 @@ async def register(schema: schemas.UserAuth):
     password = schema.user_password
     status = register_user(username, password)
     if status == 0:
-        response = {'status': status, 'message': '注册成功'}
+        response = schemas.RegisterResponse(status=status, message='注册成功')
     else:
-        response = {'status': status, 'message': '注册失败'}
+        response = schemas.RegisterResponse(status=status, message='注册失败')
     return response
 
 
@@ -25,7 +25,7 @@ async def login(schema: schemas.UserAuth):
     password = schema.form.get('password')
     status = login_user(username, password)
     if status == 0:
-        response = {'status': status, 'login': True}
+        response = schemas.LoginResponse(status=status, message='登录成功')
     else:
-        response = {'status': status, 'login': False}
+        response = schemas.LoginResponse(status=status, message='登录失败')
     return response

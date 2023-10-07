@@ -26,6 +26,11 @@ class UserAuth(UserBase):
     user_password: str
 
 
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
+
 class DishesBase(BaseModel):
     """
     dishid: int
@@ -41,3 +46,21 @@ class DishesBase(BaseModel):
     price: float
     shopname: str
     floor: int
+
+
+class BaseResponse(BaseModel):
+    status: int
+    message: str
+
+
+class LoginResponse(BaseResponse):
+    pass
+
+
+class RegisterResponse(BaseResponse):
+    pass
+
+
+class DishesResponse(BaseResponse):
+    dishes: list[DishesBase]
+
