@@ -4,6 +4,7 @@ import hashlib
 db = SessionLocal()
 
 
+#TODO:mysql提交错误
 def register_user(username, password):
     """
     注册用户
