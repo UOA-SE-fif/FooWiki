@@ -1,9 +1,19 @@
 import styles from './form_card.module.scss'
+import {createRef} from "react";
+
+
+export let username = createRef()
+export let password = createRef()
+export let confirm_password = createRef()
+
 
 export default function Form_card({cardType, func}) {
+
     let cardStyle = styles.loginCard + " card";
+    let confirm_element = null;
     if (cardType === "register") {
-        cardStyle = styles.registerCard + " card";
+        confirm_element = <input className="form-control" type="password" name="ConfirmPassword"
+                                 id="confirmPassword" placeholder="Confirm Password" ref={confirm_password}></input>
     }
     return (
         <div className={cardStyle}>
@@ -13,7 +23,9 @@ export default function Form_card({cardType, func}) {
                        placeholder="Username"></input>
                 <input className="form-control" type="password" name="Password" id="password" ref={password}
                        placeholder="Password"></input>
-                <button className="btn" type="submit" name="Register" id="registerButton" onClick={func}>{cardType}</button>
+                {confirm_element}
+                <button className="btn" type="submit" name="Register" id="registerButton"
+                        onClick={func}>{cardType}</button>
             </div>
         </div>
     )

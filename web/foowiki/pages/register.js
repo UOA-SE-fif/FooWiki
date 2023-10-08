@@ -3,14 +3,12 @@ import Container from "../components/container"
 import Form_card from "../components/form_card"
 import Image from "next/image";
 import background from "../public/background.png"
+import {username, password, confirm_password} from "../components/form_card";
 
 export default function Register() {
 
     const URL = "http://127.0.0.1:5000"
 
-    let username = createRef()
-    let password = createRef()
-    let confirm_password = createRef()
 
     function register() {
         if (username.current.value == "" || password.current.value == "" || confirm_password.current.value == "") {
@@ -55,11 +53,11 @@ export default function Register() {
             <Form_card cardType={"register"} func={register}>
             </Form_card>
             <Image src={background} alt="background"
-                   layout="fill"
-                   objectFit="cover"
+                   fill
                    quality={100}
                    priority={true}
-                   style={{zIndex: -1}}
+                   style={{zIndex: -1,
+                   objectFit: "cover"}}
             ></Image>
         </Container>
     )

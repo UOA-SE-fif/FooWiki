@@ -3,10 +3,9 @@ import Container from "../components/container"
 import Form_card from "../components/form_card"
 import Image from "next/image";
 import background from "../public/background.png"
+import {username, password} from "../components/form_card";
 
 export default function Login() {
-    let username = createRef()
-    let password = createRef()
 
     const URL = "http://127.0.0.1:5000"
 
