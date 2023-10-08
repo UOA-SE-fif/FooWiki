@@ -57,7 +57,8 @@ export default function Dishes({data}) {
         </tr>)
     })
 
-
+    //初始化DOMroot
+    root = createRoot(document.getElementById("dishMessage"))
 
     // 等待后端返回数据再渲染
     return (
@@ -96,14 +97,13 @@ export default function Dishes({data}) {
 }
 
 export function change() {
-    //初始化DOMroot
-    root = createRoot(document.getElementById("dishMessage"))
+
     dishTable = []
     // 获取所有筛选信息
-    let floorValue = document.getElementById("floor").selectedValue
-    let shopname = document.getElementById("shop").selectedValue
-    let minPrice = document.getElementById("priceLeft").value
-    let maxPrice = document.getElementById("priceRight").value
+    let floorValue = document.getElementById("floor")
+    let shopname = document.getElementById("shop")
+    let minPrice = document.getElementById("priceLeft")
+    let maxPrice = document.getElementById("priceRight")
 
 
     console.log(floorValue, " ", shopname, " ", minPrice, " ", maxPrice)

@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d06724e-926c-44c4-b6e7-88e030a02d08" name="更改" comment="add fastapi to requirements.txt">
-      <change afterPath="$PROJECT_DIR$/application/core/crud/add_dishes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/食堂菜品数据(1).xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import_xlsx.py" afterDir="false" />
+    <list default="true" id="3d06724e-926c-44c4-b6e7-88e030a02d08" name="更改" comment="update backends orm and frontends dishes.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/core/crud/get_dishes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/crud/get_dishes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/components/dropdown_selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/components/dropdown_selector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/pages/dishes.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/pages/dishes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/pages/scss/dishes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/pages/scss/dishes.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,8 +185,17 @@
       <workItem from="1696597716690" duration="100000" />
       <workItem from="1696673423230" duration="612000" />
       <workItem from="1696680422706" duration="622000" />
-      <workItem from="1696734678239" duration="6368000" />
+      <workItem from="1696734678239" duration="6692000" />
     </task>
+    <task id="LOCAL-00001" summary="update backends orm and frontends dishes.js">
+      <option name="closed" value="true" />
+      <created>1696747620782</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696747620782</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +245,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="update backends orm and frontends dishes.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="update backends orm and frontends dishes.js" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FooWiki$__init__.coverage" NAME="__init__ 覆盖结果" MODIFIED="1696411927023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application" />
