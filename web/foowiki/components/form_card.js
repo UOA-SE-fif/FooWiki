@@ -24,7 +24,7 @@ export default function Form_card({cardType, func}) {
                 <input className="form-control" type="password" name="Password" id="password" ref={password}
                        placeholder="Password"></input>
                 {confirm_element}
-                <button className="btn" type="submit" name="Register" id="registerButton"
+                <button className="btn" type="submit"
                         onClick={func}>{cardType}</button>
             </div>
         </div>

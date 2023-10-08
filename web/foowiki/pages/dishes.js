@@ -1,7 +1,8 @@
 import {createRef} from "react"
-import {useState} from "react"
-import ReactDOM from "react-dom"
 import {createRoot} from "react-dom/client"
+import Container from "@/components/container";
+import Selector from "@/components/dropdown_selector";
+import "./scss/dishes.css"
 
 //存放菜品的全局变量
 let dishes = []
@@ -17,58 +18,66 @@ let floor = createRef()
 let shop = createRef()
 let priceLeft = createRef()
 let priceRight = createRef()
+let dishesInfo = null
 
-export default function Dishes({ data }){
+export default function Dishes({data}) {
 
     //向后端请求
-     fetch(`${URL}/dishesInfo`,{
-            method:"GET",
-            mode:"cors",
-            headers:{
-                'Content-Type':"application/json"
-            }
-     }).then(res=>res.json())
-         .then(res=>{
-             console.log(res)
-             dishes = res.dishes
-             //初始化菜品列表
-             let dishesTable = dishes.map((item,index)=>{
-                 return(<tr key={index}>
-                     <td>{item.dishname}</td>
-                     <td>{item.describe}</td>
-                     <td>{item.price}</td>
-                     <td>{item.shopname}</td>
-                     <td>{item.floor}</td>
-                     <td>{item.type}</td>
-                 </tr>)
-             })
+    fetch(`${URL}/dishesInfo`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res)
+            dishes = res.dishes
+            // 获取所有商家
+            let shops = new Set()
+            dishes.forEach((item) => {
+                shops.add(item.shopname)
+            })
+            shops = Array.from(new Set(shops))
+            // 获取所有楼层
+            let floors = new Set()
+            dishes.forEach((item) => {
+                floors.add(item.floor)
+            })
+            floors = Array.from(new Set(floors))
+            // 初始化菜品列表
+            dishesInfo = dishes.map((item, index) => {
+                return (<tr key={index}>
+                    <td>{item.dishname}</td>
+                    <td>{item.describe}</td>
+                    <td>{item.price}</td>
+                    <td>{item.shopname}</td>
+                    <td>{item.floor}</td>
+                    <td>{item.type}</td>
+                </tr>)
+            })
 
-             //初始化DOMroot
-             root = createRoot(document.getElementById("dishMessage"))
-             root.render(dishesTable)
-         })
+            //初始化DOMroot
+            root = createRoot(document.getElementById("dishMessage"))
+            root.render(dishesTable)
+        })
 
     return (
-        <div>
-            <div>
-                <select name="floor" id="floor" ref={floor} onChange={change}>
-                    <option value={1}>1楼</option>
-                    <option value={2}>2楼</option>
-                    <option value={3}>3楼</option>
-                </select>
-
-                <select name="shop" id="shop" ref={shop} onChange={change}>
-                    <option>商家1</option>
-                    <option>商家2</option>
-                    <option>商家3</option>
-                    <option>商家4</option>
-                </select>
-                <input type="number" name="priceLeft" id="priceLeft" placeholder="最低价格" ref={priceLeft} onChange={change}></input>
-                <input type="number" name="priceRight" id="priceRight" placeholder="最高价格" ref={priceRight} onChange={change}></input>
+        <Container>
+            <div className="row">
+                <Selector name="楼层" options={["1","2","3"]} onChange={change} ref={floor}/>
+                <Selector name="商家" options={["a","b","c"]} onChange={change} ref={shop}/>
+                <div className="col-2 flex">
+                    <label htmlFor="price">价格</label>
+                    <input className="form-control" type="number" name="priceLeft" id="priceLeft" placeholder="最低价格" ref={priceLeft}
+                       onChange={change}></input>
+                    <input className="form-control" type="number" name="priceRight" id="priceRight" placeholder="最高价格" ref={priceRight}
+                       onChange={change}></input>
+                </div>
             </div>
 
             <div>
-                <table>
+                <table className="table">
                     <thead>
                     <tr>
                         <th>菜品名称</th>
@@ -83,12 +92,12 @@ export default function Dishes({ data }){
                     </tbody>
                 </table>
             </div>
-        </div>
+        </Container>
     )
 }
 
-export function change(){
-    dishTable =[]
+export function change() {
+    dishTable = []
     //获取所有筛选信息
     let floorValue = floor.current.value
     let shopname = shop.current.value
@@ -96,19 +105,25 @@ export function change(){
     let maxPrice = priceRight.current.value
 
 
-    console.log(floorValue," ",shopname," ",minPrice," ",maxPrice)
+    console.log(floorValue, " ", shopname, " ", minPrice, " ", maxPrice)
 
-    for(let i=0;i<dishes.length;i++){
+    for (let i = 0; i < dishes.length; i++) {
         let dish = dishes[i]
-        //检查楼层和商家
-        if(dish.floor!=parseInt(floorValue)||dish.shopname!=shopname)continue
+        //检查楼层
+        if (floorValue !== "all") {
+            if (dish.floor !== floorValue) continue
+        }
+        //检查商家
+        if (shopname !== "all") {
+            if (dish.shopname !== shopname) continue
+        }
         //检查价格区间
         //比大的大或者比小的小
-        if(minPrice&&maxPrice&&(dish.price<minPrice||dish.price>maxPrice))continue
+        if (minPrice && maxPrice && (dish.price < minPrice || dish.price > maxPrice)) continue
         //有大无小比大的大
-        else if(!minPrice&&maxPrice&&dish.price>maxPrice)continue
+        else if (!minPrice && maxPrice && dish.price > maxPrice) continue
         //有小无大比小的大
-        else if(minPrice&&!maxPrice&&dish.price<minPrice)continue
+        else if (minPrice && !maxPrice && dish.price < minPrice) continue
 
         dishTable.push(<tr key={i}>
             <td>{dish.dishname}</td>

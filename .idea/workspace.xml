@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d06724e-926c-44c4-b6e7-88e030a02d08" name="更改" comment="add fastapi to requirements.txt">
-      <change afterPath="$PROJECT_DIR$/web/foowiki/components/container.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/foowiki/components/container.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/foowiki/pages/_app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/foowiki/pages/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/foowiki/pages/scss/register.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/foowiki/styles/global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/foowiki/components/dropdown_selector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/foowiki/pages/scss/dishes.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/app/page.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/pages/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/pages/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/foowiki/components/form_card.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/components/form_card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/foowiki/components/form_card.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/components/form_card.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/foowiki/pages/dishes.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/pages/dishes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +74,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev__csf",
+    "git-widget-placeholder": "dev__wzp",
     "last_opened_file_path": "E:/Mark/Programming/GithubProject/FooWiki",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
@@ -172,6 +166,7 @@
       <workItem from="1696597716690" duration="100000" />
       <workItem from="1696673423230" duration="612000" />
       <workItem from="1696680422706" duration="622000" />
+      <workItem from="1696734678239" duration="343000" />
     </task>
     <servers />
   </component>
@@ -227,7 +222,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FooWiki$__init__.coverage" NAME="__init__ 覆盖结果" MODIFIED="1696411927023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application" />
     <SUITE FILE_PATH="coverage/FooWiki$user_api.coverage" NAME="user_api 覆盖结果" MODIFIED="1696581048405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application/routes" />
-    <SUITE FILE_PATH="coverage/FooWiki$run.coverage" NAME="run 覆盖结果" MODIFIED="1696648176631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FooWiki$run.coverage" NAME="run 覆盖结果" MODIFIED="1696735319315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FooWiki$config.coverage" NAME="config 覆盖结果" MODIFIED="1696339809310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application/config" />
   </component>
 </project>
