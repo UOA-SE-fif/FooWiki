@@ -4,11 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d06724e-926c-44c4-b6e7-88e030a02d08" name="更改" comment="" />
+    <list default="true" id="3d06724e-926c-44c4-b6e7-88e030a02d08" name="更改" comment="update backends orm and frontends dishes.js">
+      <change afterPath="$PROJECT_DIR$/web/foowiki/components/nav_bar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/foowiki/components/nav_bar.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/foowiki/pages/scss/index.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/foowiki/pages/scss/utilities.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/foowiki/components/container.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/components/container.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/foowiki/components/dropdown_selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/components/dropdown_selector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/foowiki/pages/dishes.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/pages/dishes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/foowiki/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/pages/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
     <envs>
@@ -38,7 +55,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feat--login-api" />
+        <entry key="$PROJECT_DIR$" value="dev_wzp" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,26 +67,102 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2VqIfMe8En3cDk1g9HLDG6rMXGC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev__wzp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Mark/Programming/GithubProject/FooWiki&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="D:\wzp\FooWiki\application\models" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.run">
+    <configuration name="import_xlsx" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FooWiki" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/import_xlsx.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FooWiki" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test1-run.py" type="Python.FastAPI">
+      <option name="file" value="E:\Mark\Programming\GithubProject\FooWiki\run.py" />
+      <module name="FooWiki" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\17835\.conda\envs\FooWiki_310\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.run" />
+        <item itemvalue="Python.import_xlsx" />
+        <item itemvalue="Python.run" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -80,7 +173,38 @@
       <updated>1695557426706</updated>
       <workItem from="1695557429581" duration="69000" />
       <workItem from="1695557506227" duration="726000" />
+      <workItem from="1696304663005" duration="734000" />
+      <workItem from="1696305533090" duration="40000" />
+      <workItem from="1696305622921" duration="566000" />
+      <workItem from="1696306203120" duration="6296000" />
+      <workItem from="1696315074544" duration="1635000" />
+      <workItem from="1696336180636" duration="163000" />
+      <workItem from="1696336421575" duration="1292000" />
+      <workItem from="1696338188688" duration="295000" />
+      <workItem from="1696338498518" duration="1621000" />
+      <workItem from="1696340465660" duration="223000" />
+      <workItem from="1696340715019" duration="157000" />
+      <workItem from="1696342451871" duration="596000" />
+      <workItem from="1696409083720" duration="1400000" />
+      <workItem from="1696410777844" duration="3217000" />
+      <workItem from="1696414167968" duration="232000" />
+      <workItem from="1696580959150" duration="1483000" />
+      <workItem from="1696597522221" duration="164000" />
+      <workItem from="1696597716690" duration="100000" />
+      <workItem from="1696673423230" duration="612000" />
+      <workItem from="1696680422706" duration="622000" />
+      <workItem from="1696734678239" duration="6692000" />
+      <workItem from="1696778361571" duration="556000" />
     </task>
+    <task id="LOCAL-00001" summary="update backends orm and frontends dishes.js">
+      <option name="closed" value="true" />
+      <created>1696747620782</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696747620782</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +254,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="update backends orm and frontends dishes.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="update backends orm and frontends dishes.js" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FooWiki$__init__.coverage" NAME="__init__ 覆盖结果" MODIFIED="1696411927023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application" />
+    <SUITE FILE_PATH="coverage/FooWiki$user_api.coverage" NAME="user_api 覆盖结果" MODIFIED="1696581048405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application/routes" />
+    <SUITE FILE_PATH="coverage/FooWiki$run.coverage" NAME="run 覆盖结果" MODIFIED="1696778916249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FooWiki$import_xlsx.coverage" NAME="import_xlsx 覆盖结果" MODIFIED="1696741956860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FooWiki$config.coverage" NAME="config 覆盖结果" MODIFIED="1696339809310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application/config" />
   </component>
 </project>

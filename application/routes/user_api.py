@@ -1,19 +1,31 @@
-from flask import Blueprint, request, render_template
+from fastapi import APIRouter
 from ..core import register_user
+from ..core import login_user
+from ..models import schemas
 
-user_api = Blueprint('user_api', __name__, url_prefix='/api')
 
-@user_api.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'GET':
-        return render_template('register.html')
+router_user = APIRouter()
+
+
+@router_user.post('/register')
+async def register(schema: schemas.UserAuth):
+    username = schema.username
+    password = schema.user_password
+    status = register_user(username, password)
+    if status == 0:
+        response = schemas.RegisterResponse(status=status, message='注册成功')
     else:
-        username = request.form.get('username')
-        password = request.form.get('password')
-        status = register_user(username, password)
-        if status == 0:
-            response = {'status': status, 'message': '注册成功'}
-        else:
-            response = {'status': status, 'message': '注册失败'}
-        return response
+        response = schemas.RegisterResponse(status=status, message='注册失败')
+    return response
 
+
+@router_user.put('/login')
+async def login(schema: schemas.UserAuth):
+    username = schema.username
+    password = schema.user_password
+    status = login_user(username, password)
+    if status == 0:
+        response = schemas.LoginResponse(status=status, message='登录成功')
+    else:
+        response = schemas.LoginResponse(status=status, message='登录失败')
+    return response

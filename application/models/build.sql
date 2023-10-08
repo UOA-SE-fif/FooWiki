@@ -12,7 +12,11 @@ create table `dishes` (
     `describe` varchar(255),
     `price` float not null,
     `shopname` varchar(100) not null,
-    `floor` int not null
+    `floor` int not null,
+    `type` varchar(100) not null,
+    `satiety` int not null,
+    `vegetables` int not null,
+    `meat` int not null
 );
 
 create table `session` (

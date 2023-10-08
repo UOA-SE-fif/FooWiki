@@ -1,11 +1,11 @@
-from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from application.models.database import Base, SessionLocal
 
-db = SQLAlchemy()  # 创建数据库对象
 
-
-class UserBase(db.Model):  # 用户基本信息
+class UserBase(Base):  # 用户基本信息
     """
     table:
         create table users (
@@ -15,8 +15,8 @@ class UserBase(db.Model):  # 用户基本信息
         );"""
 
     __tablename__ = "users"
-    userid: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    username: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
+    userid = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String(100), nullable=False, unique=True)
 
 
 class UserAuth(UserBase):  # 用户登录信息
@@ -28,10 +28,10 @@ class UserAuth(UserBase):  # 用户登录信息
             user_password varchar(32) not null
         );"""
 
-    user_password: Mapped[str] = mapped_column(String(32), nullable=False)
+    user_password = Column(String(32), nullable=False)
 
 
-class DishesBase(db.Model):  # 菜品基本信息
+class DishesBase(Base):  # 菜品基本信息
     """
     table:
         create table dishes (
@@ -41,29 +41,27 @@ class DishesBase(db.Model):  # 菜品基本信息
             price float not null,
             shopname varchar(100) not null,
             floor int not null
+            type varchar(100) not null
+            satiety int not null
+            vegetables int not null
+            meat int not null
         );
     """
 
     __tablename__ = "dishes"
-    dishid: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    dishname: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
-    describe: Mapped[str] = mapped_column(String(255))
-    price: Mapped[float] = mapped_column(Integer, nullable=False)
-    shopname: Mapped[str] = mapped_column(String(100), nullable=False)
-    floor: Mapped[int] = mapped_column(Integer, nullable=False)
-
-    def dict(self):
-        return {
-            'dishid': self.dishid,
-            'dishname': self.dishname,
-            'describe': self.describe,
-            'price': self.price,
-            'shopname': self.shopname,
-            'floor': self.floor
-        }
+    dishid = Column(Integer, primary_key=True, autoincrement=True)
+    dishname = Column(String(100), nullable=False, unique=True)
+    describe = Column(String(255))
+    price = Column(Float, nullable=False)
+    shopname = Column(String(100), nullable=False)
+    floor = Column(Integer, nullable=False)
+    type = Column(String(100), nullable=False)
+    satiety = Column(Integer, nullable=False)
+    vegetables = Column(Integer, nullable=False)
+    meat = Column(Integer, nullable=False)
 
 
-class Session(db.Model):  # 用户登录状态
+class Session(Base):  # 用户登录状态
     """
     table:
         create table session (
@@ -74,5 +72,14 @@ class Session(db.Model):  # 用户登录状态
     """
 
     __tablename__ = "session"
-    sessionid: Mapped[str] = mapped_column(String(32), primary_key=True)
-    userid: Mapped[int] = mapped_column(Integer, nullable=False)
+    sessionid = Column(String(32), primary_key=True)
+    userid = Column(Integer, ForeignKey("users.userid"))
+    user = relationship("UserBase")
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

@@ -27,7 +27,8 @@ pip install -r requirements.txt
 
 - 添加python依赖到requirements.txt
 ```bash
-pip freeze > requirements.txt
+pip install pipreqs
+pipreqs --force
 ```
 
 - 安装npm依赖
