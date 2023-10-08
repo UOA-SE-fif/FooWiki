@@ -39,13 +39,21 @@ class DishesBase(BaseModel):
     price: float
     shopname: str
     floor: int
+    type: str
+    satiety: int
+    vegetables: int
+    meat: int
     """
-    dishid: int
+    dishid: int = None
     dishname: str
-    describe: str
+    describe: str = ''
     price: float
     shopname: str
     floor: int
+    type: str
+    satiety: int
+    vegetables: int
+    meat: int
 
 
 class BaseResponse(BaseModel):

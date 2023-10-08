@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d06724e-926c-44c4-b6e7-88e030a02d08" name="更改" comment="add fastapi to requirements.txt">
-      <change afterPath="$PROJECT_DIR$/web/foowiki/components/dropdown_selector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/foowiki/pages/scss/dishes.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/core/crud/add_dishes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/食堂菜品数据(1).xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import_xlsx.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/components/form_card.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/components/form_card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/foowiki/components/form_card.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/components/form_card.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/core/crud/get_dishes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/crud/get_dishes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/foowiki/components/dropdown_selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/components/dropdown_selector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/foowiki/pages/dishes.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/pages/dishes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/foowiki/pages/scss/dishes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/foowiki/pages/scss/dishes.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +94,33 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
       <recent name="D:\wzp\FooWiki\application\models" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run">
+    <configuration name="import_xlsx" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FooWiki" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/import_xlsx.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FooWiki" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -132,6 +160,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.run" />
+        <item itemvalue="Python.import_xlsx" />
         <item itemvalue="Python.run" />
       </list>
     </recent_temporary>
@@ -166,7 +195,7 @@
       <workItem from="1696597716690" duration="100000" />
       <workItem from="1696673423230" duration="612000" />
       <workItem from="1696680422706" duration="622000" />
-      <workItem from="1696734678239" duration="343000" />
+      <workItem from="1696734678239" duration="6368000" />
     </task>
     <servers />
   </component>
@@ -222,7 +251,8 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FooWiki$__init__.coverage" NAME="__init__ 覆盖结果" MODIFIED="1696411927023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application" />
     <SUITE FILE_PATH="coverage/FooWiki$user_api.coverage" NAME="user_api 覆盖结果" MODIFIED="1696581048405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application/routes" />
-    <SUITE FILE_PATH="coverage/FooWiki$run.coverage" NAME="run 覆盖结果" MODIFIED="1696735319315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FooWiki$run.coverage" NAME="run 覆盖结果" MODIFIED="1696746247483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FooWiki$import_xlsx.coverage" NAME="import_xlsx 覆盖结果" MODIFIED="1696741956860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FooWiki$config.coverage" NAME="config 覆盖结果" MODIFIED="1696339809310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/application/config" />
   </component>
 </project>
