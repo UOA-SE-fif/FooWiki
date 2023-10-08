@@ -5,10 +5,6 @@ import Selector from "@/components/dropdown_selector";
 import "./scss/dishes.css"
 import Nav_bar from "@/components/nav_bar";
 
-//存放楼层的全局变量
-let floors = []
-//存放商家的全局变量
-let shops = []
 //存放菜品的全局变量
 let dishes = []
 //菜品列表的html元素
@@ -16,7 +12,9 @@ let dishTable
 //菜品列表的DOMroot
 let root
 //后端地址
-const URL = "http://127.0.0.1:5000"
+const localURL = "http://127.0.0.1:5000"
+const remoteURL = "http://175.178.154.171:5000"
+const URL = remoteURL
 //菜品信息
 let dishesInfo = null
 
@@ -31,6 +29,7 @@ export async function getServerSideProps() {
         }
     }
 }
+
 export default function Dishes({data}) {
 
     dishes = data.dishes
@@ -59,7 +58,6 @@ export default function Dishes({data}) {
     })
 
 
-
     // 等待后端返回数据再渲染
     return (
         <div>
@@ -70,10 +68,12 @@ export default function Dishes({data}) {
                     <Selector name="商家" options={shops} onChange={change} id={"shop"}/>
                     <div className="col-2 flex">
                         <label htmlFor="price">价格</label>
-                        <input className="form-control" type="number" name="priceLeft" id="priceLeft" placeholder="最低价格"
-                           onChange={change}></input>
-                        <input className="form-control" type="number" name="priceRight" id="priceRight" placeholder="最高价格"
-                           onChange={change}></input>
+                        <input className="form-control" type="number" name="priceLeft" id="priceLeft"
+                               placeholder="最低价格"
+                               onChange={change}></input>
+                        <input className="form-control" type="number" name="priceRight" id="priceRight"
+                               placeholder="最高价格"
+                               onChange={change}></input>
                     </div>
                 </div>
 
@@ -100,7 +100,7 @@ export default function Dishes({data}) {
 }
 
 export function change() {
-    if(!root)root = createRoot(document.getElementById("dishesInfo"))
+    if (!root) root = createRoot(document.getElementById("dishesInfo"))
     dishTable = []
     // 获取所有筛选信息
     let floorValue = parseInt(document.getElementById("floor").value)
