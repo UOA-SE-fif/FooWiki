@@ -3,6 +3,7 @@ import {createRoot} from "react-dom/client"
 import Container from "@/components/container";
 import Selector from "@/components/dropdown_selector";
 import "./scss/dishes.css"
+import Nav_bar from "@/components/nav_bar";
 
 //存放楼层的全局变量
 let floors = []
@@ -61,37 +62,40 @@ export default function Dishes({data}) {
 
     // 等待后端返回数据再渲染
     return (
-        <Container>
-            <div className="row">
-                <Selector name="楼层" options={floors} onChange={change} id={"floor"}/>
-                <Selector name="商家" options={shops} onChange={change} id={"shop"}/>
-                <div className="col-2 flex">
-                    <label htmlFor="price">价格</label>
-                    <input className="form-control" type="number" name="priceLeft" id="priceLeft" placeholder="最低价格"
-                       onChange={change}></input>
-                    <input className="form-control" type="number" name="priceRight" id="priceRight" placeholder="最高价格"
-                       onChange={change}></input>
+        <div>
+            <Nav_bar></Nav_bar>
+            <Container>
+                <div className="row">
+                    <Selector name="楼层" options={floors} onChange={change} id={"floor"}/>
+                    <Selector name="商家" options={shops} onChange={change} id={"shop"}/>
+                    <div className="col-2 flex">
+                        <label htmlFor="price">价格</label>
+                        <input className="form-control" type="number" name="priceLeft" id="priceLeft" placeholder="最低价格"
+                           onChange={change}></input>
+                        <input className="form-control" type="number" name="priceRight" id="priceRight" placeholder="最高价格"
+                           onChange={change}></input>
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th>菜品名称</th>
-                        <th>描述</th>
-                        <th>价格</th>
-                        <th>商家</th>
-                        <th>楼层</th>
-                        <th>种类</th>
-                    </tr>
-                    </thead>
-                    <tbody id="dishesInfo">
-                    {dishesInfo}
-                    </tbody>
-                </table>
-            </div>
-        </Container>
+                <div>
+                    <table className="table">
+                        <thead>
+                        <tr>
+                            <th>菜品名称</th>
+                            <th>描述</th>
+                            <th>价格</th>
+                            <th>商家</th>
+                            <th>楼层</th>
+                            <th>种类</th>
+                        </tr>
+                        </thead>
+                        <tbody id="dishesInfo">
+                        {dishesInfo}
+                        </tbody>
+                    </table>
+                </div>
+            </Container>
+        </div>
     )
 }
 
@@ -110,11 +114,11 @@ export function change() {
     for (let i = 0; i < dishes.length; i++) {
         let dish = dishes[i]
         //检查楼层
-        if (floorValue !== "all") {
+        if (floorValue !== 0) {
             if (dish.floor !== floorValue) continue
         }
         //检查商家
-        if (shopname !== "all") {
+        if (shopname !== "0") {
             if (dish.shopname !== shopname) continue
         }
         //检查价格区间
