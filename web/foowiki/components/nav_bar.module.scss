@@ -1,0 +1,28 @@
+
+.navbar {
+
+  // 背景不透明度
+    opacity: 0.8;
+  // 毛玻璃效果
+    backdrop-filter: blur(10px);
+  // 背景顏色
+    background-color: #ffffff;
+
+  .navbar_btn {
+    font-size: 14px;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: #ffffff;
+      background-color: #000000;
+    }
+
+  }
+
+}
