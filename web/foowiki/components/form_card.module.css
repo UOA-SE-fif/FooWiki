@@ -1,0 +1,18 @@
+.loginCard {
+  height: 510px;
+  width: 741px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 40px rgb(9, 0, 0);
+  border-radius: 10px;
+  padding: 30px;
+  background-color: #ffffff;
+}
+.loginCard input {
+  margin: 10px 0;
+}
+.loginCard button {
+  background-color: #ffc720;
+}/*# sourceMappingURL=form_card.module.css.map */

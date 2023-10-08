@@ -86,7 +86,7 @@ export default function Dishes({data}) {
                         <th>种类</th>
                     </tr>
                     </thead>
-                    <tbody id="dishMessage">
+                    <tbody id="dishesInfo">
                     {dishesInfo}
                     </tbody>
                 </table>
@@ -96,12 +96,11 @@ export default function Dishes({data}) {
 }
 
 export function change() {
-    //初始化DOMroot
-    root = createRoot(document.getElementById("dishMessage"))
+    if(!root)root = createRoot(document.getElementById("dishesInfo"))
     dishTable = []
     // 获取所有筛选信息
-    let floorValue = document.getElementById("floor").selectedValue
-    let shopname = document.getElementById("shop").selectedValue
+    let floorValue = parseInt(document.getElementById("floor").value)
+    let shopname = document.getElementById("shop").value
     let minPrice = document.getElementById("priceLeft").value
     let maxPrice = document.getElementById("priceRight").value
 
