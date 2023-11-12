@@ -1,6 +1,6 @@
 import pandas as pd
 from application.core import add_dishes
-from application.models import schemas
+from application.orm import schemas
 
 
 def import_xlsx():

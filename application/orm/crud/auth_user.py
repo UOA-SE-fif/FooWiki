@@ -1,4 +1,4 @@
-from ...models.models import *
+from application.orm.models import *
 import hashlib
 
 db = SessionLocal()

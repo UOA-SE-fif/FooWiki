@@ -1,7 +1,5 @@
 from fastapi import APIRouter
-from ..core import register_user
-from ..core import login_user
-from ..models import schemas
+from ..orm import schemas, register_user, login_user
 
 
 router_user = APIRouter()
