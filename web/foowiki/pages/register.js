@@ -8,7 +8,7 @@ export default function Register() {
 
     const localURL = "http://127.0.0.1:5000"
     const remoteURL = "http://175.178.154.171:5000"
-    const URL = remoteURL
+    const URL = localURL
 
 
     function register() {
