@@ -1,6 +1,7 @@
 from application.orm.models import *
 import hashlib
 
+# Todo: 使用router传入的db连接数据库
 db = SessionLocal()
 
 

@@ -4,6 +4,7 @@ from ..orm import schemas, get_dishes
 router_dish = APIRouter()
 
 
+# Todo: 使用orm.database.get_db()获取数据库连接
 @router_dish.get('/dishesInfo')
 async def get_dishes():
     dishes_list = get_dishes()
