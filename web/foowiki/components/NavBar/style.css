@@ -37,6 +37,14 @@
   width: 98px;
 }
 
+.nav-bar .dishes {
+  height: 32px;
+  left: 180px;
+  position: absolute;
+  top: 23px;
+  width: 98px;
+}
+
 .nav-bar .text-wrapper-8 {
   color: #000000;
   font-family: "Inter", Helvetica;

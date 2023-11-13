@@ -1,11 +1,18 @@
-import {createRef} from "react"
+import React, {createRef} from "react"
 import {createRoot} from "react-dom/client"
 import Container from "@/components/container";
 import Selector from "@/components/dropdown_selector";
+// import {Selector} from "@/components/Selector";
 import "./scss/dishes.css"
 import Nav_bar from "@/components/nav_bar";
+import {Title} from "@/components/Title";
 import {redirect} from "next/navigation";
+import useScreenSize from "@/Hook/useScreenSize";
+import {NavBar} from "@/components/NavBar";
+import {DishesCard} from "@/components/DishesCard";
 
+//屏幕改变的阈值
+const changeSize = 500
 //存放菜品的全局变量
 let dishes = []
 //菜品列表的html元素
@@ -21,35 +28,35 @@ let dishesInfo = null
 
 
 export async function getServerSideProps(context) {
-  try {
-    // 向后端请求
-    const res = await fetch(URL + "/dishesInfo");
-    const data = await res.json();
+    try {
+        // 向后端请求
+        const res = await fetch(URL + "/dishesInfo");
+        const data = await res.json();
 
-    // 返回数据
-    return {
-      props: {
-        data
-      }
-    };
-  } catch (error) {
-    // 捕获错误时进行重定向
-    context.res.writeHead(302, {
-      Location: '/'
-    });
-    context.res.end();
+        // 返回数据
+        return {
+            props: {
+                data
+            }
+        };
+    } catch (error) {
+        // 捕获错误时进行重定向
+        context.res.writeHead(302, {
+            Location: '/'
+        });
+        context.res.end();
 
-    // 在这里添加一个 return 语句，确保函数不会继续执行下去
-    return {
-      props: {}
-    };
-  }
+        // 在这里添加一个 return 语句，确保函数不会继续执行下去
+        return {
+            props: {}
+        };
+    }
 }
 
-export default function Dishes({data}) {
+const DishesPage = ({screenWidth, screenHeight, data}) => {
 
-    if(!data){
-        window.location.href='/'
+    if (!data) {
+        window.location.href = '/'
         return
     }
     dishes = data.dishes
@@ -66,57 +73,91 @@ export default function Dishes({data}) {
     })
     floors = Array.from(new Set(floors))
     // 初始化菜品列表
-    dishesInfo = dishes.map((item, index) => {
-        return (<tr key={index}>
-            <td>{item.dishname}</td>
-            <td>{item.describe}</td>
-            <td>{item.price}</td>
-            <td>{item.shopname}</td>
-            <td>{item.floor}</td>
-            <td>{item.type}</td>
-        </tr>)
-    })
-
+    if (screenWidth >= changeSize) {
+        dishesInfo = dishes.map((item, index) => {
+            return (<tr key={index}>
+                <td>{item.dishname}</td>
+                <td>{item.describe}</td>
+                <td>{item.price}</td>
+                <td>{item.shopname}</td>
+                <td>{item.floor}</td>
+                <td>{item.type}</td>
+            </tr>)
+        })
+    }
+    else {
+        dishesInfo = dishes.map((item, index) => {
+            return (<DishesCard item={item}></DishesCard>)
+        })
+    }
 
     // 等待后端返回数据再渲染
-    return (
-        <div>
-            <Nav_bar></Nav_bar>
-            <Container>
-                <div className="row">
-                    <Selector name="楼层" options={floors} onChange={change} id={"floor"}/>
-                    <Selector name="商家" options={shops} onChange={change} id={"shop"}/>
-                    <div className="col-2 flex">
-                        <label htmlFor="price">价格</label>
-                        <input className="form-control" type="number" name="priceLeft" id="priceLeft"
-                               placeholder="最低价格"
-                               onChange={change}></input>
-                        <input className="form-control" type="number" name="priceRight" id="priceRight"
-                               placeholder="最高价格"
-                               onChange={change}></input>
+    if (screenWidth <= changeSize) {
+        return (
+            <div>
+                <NavBar linkAdress=""></NavBar>
+                <div>
+                    <Title text="Floor"/>
+                    {/*<Selector className="selector-2" text="1st Floor"/>*/}
+                    <Title className="title-2" text="Sellers"/>
+                    {/*<Selector className="selector-instance" text="Seller Names"/>*/}
+                    <Title className="title-3" text="Price"/>
+
+                    <div className="element-floor-wrapper">
+                        <div className="element-st-floor">Low Price</div>
+                    </div>
+                    <div className="component">
+                        <div className="element-st-floor">High Price</div>
+                    </div>
+                    <div className="text-wrapper-6">~</div>
+                    <div className="text-wrapper-7">More</div>
+
+                    <div>
+                        {dishesInfo}
                     </div>
                 </div>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                <Nav_bar></Nav_bar>
+                <Container>
+                    <div className="row">
+                        <Selector name="楼层" options={floors} onChange={change} id={"floor"}/>
+                        <Selector name="商家" options={shops} onChange={change} id={"shop"}/>
+                        <div className="col-2 flex">
+                            <label htmlFor="price">价格</label>
+                            <input className="form-control" type="number" name="priceLeft" id="priceLeft"
+                                   placeholder="最低价格"
+                                   onChange={change}></input>
+                            <input className="form-control" type="number" name="priceRight" id="priceRight"
+                                   placeholder="最高价格"
+                                   onChange={change}></input>
+                        </div>
+                    </div>
 
-                <div>
-                    <table className="table">
-                        <thead>
-                        <tr>
-                            <th>菜品名称</th>
-                            <th>描述</th>
-                            <th>价格</th>
-                            <th>商家</th>
-                            <th>楼层</th>
-                            <th>种类</th>
-                        </tr>
-                        </thead>
-                        <tbody id="dishesInfo">
-                        {dishesInfo}
-                        </tbody>
-                    </table>
-                </div>
-            </Container>
-        </div>
-    )
+                    <div>
+                        <table className="table">
+                            <thead>
+                            <tr>
+                                <th>菜品名称</th>
+                                <th>描述</th>
+                                <th>价格</th>
+                                <th>商家</th>
+                                <th>楼层</th>
+                                <th>种类</th>
+                            </tr>
+                            </thead>
+                            <tbody id="dishesInfo">
+                            {dishesInfo}
+                            </tbody>
+                        </table>
+                    </div>
+                </Container>
+            </div>
+        )
+    }
 }
 
 export function change() {
@@ -161,4 +202,9 @@ export function change() {
 
     //重写表
     root.render(dishTable)
+}
+
+export default function Dishes({data}) {
+    const screenSize = useScreenSize();
+    return <DishesPage screenHeight={screenSize.height} screenWidth={screenSize.width} data={data}></DishesPage>
 }

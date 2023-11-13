@@ -1,0 +1,56 @@
+.selector {
+  background-color: #fff6dfa6;
+  border: 1px solid;
+  border-color: #553d00;
+  border-radius: 8px;
+  box-shadow: 3px 4px 5px #dac693;
+  height: 32px;
+  position: relative;
+  width: 366px;
+}
+
+.selector .element-floor {
+  color: #000000;
+  font-family: "Baloo Paaji-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  height: 32px;
+  left: 17px;
+  letter-spacing: 0.12px;
+  line-height: normal;
+  position: absolute;
+  top: -2px;
+  width: 300px;
+}
+
+.selector .group {
+  height: 8px;
+  left: 338px;
+  position: absolute;
+  top: 11px;
+  width: 16px;
+}
+
+.selector .overlap-group {
+  height: 9px;
+  position: relative;
+  top: -1px;
+}
+
+.selector .img {
+  height: 9px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 9px;
+}
+
+.selector .line-2 {
+  height: 9px;
+  left: 7px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 9px;
+}

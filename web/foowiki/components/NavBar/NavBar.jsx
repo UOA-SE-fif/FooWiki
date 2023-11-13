@@ -7,15 +7,17 @@ import React from "react";
 import { List2 } from "@/components/List2";
 import { Search } from "@/components/Search";
 import "./style.css";
+import Link from "next/link";
 
-export const NavBar = ({ className, icon = <List2 className="list-2" /> }) => {
+export const NavBar = ({ className, icon = <List2 className="list-2" /> ,linkAdress=""}) => {
   return (
     <div className={`nav-bar ${className}`}>
       <Search className="search-instance" />
-      <div className="user" />
+      <a className="user" href={linkAdress}></a>
       <div className="logo">
         <div className="text-wrapper-8">FooWiki</div>
       </div>
+        <Link className="dishes nav-link" href="/dishes">Dishes</Link>
       {icon}
     </div>
   );
