@@ -1,0 +1,221 @@
+.foowiki-homepage {
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.foowiki-homepage .div-2 {
+  background: linear-gradient(180deg, rgb(250, 221, 146) 0%, rgb(255, 255, 255) 100%);
+  background-color: rgba(255, 255, 255, 1);
+  height: 932px;
+  position: relative;
+  width: 430px;
+}
+
+.foowiki-homepage .comments-container {
+  height: 281px;
+  left: 32px;
+  position: absolute;
+  top: 590px;
+  width: 366px;
+}
+
+.foowiki-homepage .title-instance {
+  left: 3px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.foowiki-homepage .design-component-instance-node {
+  left: 0 !important;
+  position: absolute !important;
+  top: 30px !important;
+}
+
+.foowiki-homepage .comment-card-instance {
+  left: 0 !important;
+  position: absolute !important;
+  top: 160px !important;
+}
+
+.foowiki-homepage .recommendation {
+  height: 301px;
+  left: 32px;
+  position: absolute;
+  top: 270px;
+  width: 368px;
+}
+
+.foowiki-homepage .text-wrapper-9 {
+  color: #553d00;
+  font-family: "Baloo Paaji-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  height: 30px;
+  left: 3px;
+  letter-spacing: 0.12px;
+  line-height: normal;
+  position: absolute;
+  text-shadow: 3px 4px 5px #dbc694;
+  top: 0;
+  width: 200px;
+}
+
+.foowiki-homepage .dishes-card-instance {
+  left: 0 !important;
+  position: absolute !important;
+  top: 170px !important;
+}
+
+.foowiki-homepage .canteens-container {
+  height: 174px;
+  left: 32px;
+  position: absolute;
+  top: 81px;
+  width: 366px;
+}
+
+.foowiki-homepage .canteen-container {
+  background-color: #fff6dfa6;
+  border: 1px solid;
+  border-color: #553d00;
+  border-radius: 8px;
+  box-shadow: 3px 4px 5px #dac693;
+  height: 144px;
+  left: 0;
+  position: absolute;
+  top: 30px;
+  width: 366px;
+}
+
+.foowiki-homepage .xi-yuan {
+  color: #553d00;
+  font-family: "Baloo Bhaina 2", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  height: 20px;
+  left: 20px;
+  letter-spacing: 0.12px;
+  line-height: normal;
+  position: absolute;
+  top: 13px;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.foowiki-homepage .text-wrapper-10 {
+  color: #553d00;
+  font-family: "Baloo Bhaina 2", Helvetica;
+  font-size: 21.6px;
+  font-weight: 400;
+  height: 20px;
+  left: 40px;
+  letter-spacing: 0.11px;
+  line-height: normal;
+  position: absolute;
+  top: 46px;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.foowiki-homepage .text-wrapper-11 {
+  color: #553d00;
+  font-family: "Baloo Bhaina 2", Helvetica;
+  font-size: 21.6px;
+  font-weight: 400;
+  height: 20px;
+  left: 40px;
+  letter-spacing: 0.11px;
+  line-height: normal;
+  position: absolute;
+  top: 79px;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.foowiki-homepage .text-wrapper-12 {
+  color: #553d00;
+  font-family: "Baloo Bhaina 2", Helvetica;
+  font-size: 21.6px;
+  font-weight: 400;
+  height: 20px;
+  left: 40px;
+  letter-spacing: 0.11px;
+  line-height: normal;
+  position: absolute;
+  top: 112px;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.foowiki-homepage .peoples {
+  height: 16px;
+  left: 203px;
+  position: absolute;
+  top: 45px;
+  width: 32px;
+}
+
+.foowiki-homepage .people {
+  height: 16px !important;
+  left: 16px !important;
+  position: absolute !important;
+  top: 0 !important;
+  width: 16px !important;
+}
+
+.foowiki-homepage .people-1 {
+  height: 16px !important;
+  left: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  width: 16px !important;
+}
+
+.foowiki-homepage .peoples-2 {
+  height: 16px;
+  left: 203px;
+  position: absolute;
+  top: 78px;
+  width: 48px;
+}
+
+.foowiki-homepage .people-1-instance {
+  height: 16px !important;
+  left: 32px !important;
+  position: absolute !important;
+  top: 0 !important;
+  width: 16px !important;
+}
+
+.foowiki-homepage .peoples-3 {
+  height: 16px;
+  left: 203px;
+  position: absolute;
+  top: 111px;
+  width: 64px;
+}
+
+.foowiki-homepage .people-2 {
+  height: 16px !important;
+  left: 48px !important;
+  position: absolute !important;
+  top: 0 !important;
+  width: 16px !important;
+}
+
+.foowiki-homepage .nav-bar-instance {
+  left: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.foowiki-homepage .list-instance {
+  height: 40px !important;
+  left: 15px !important;
+  position: absolute !important;
+  top: 16px !important;
+  width: 40px !important;
+}

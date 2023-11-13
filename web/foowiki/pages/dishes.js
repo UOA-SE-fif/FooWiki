@@ -4,6 +4,7 @@ import Container from "@/components/container";
 import Selector from "@/components/dropdown_selector";
 import "./scss/dishes.css"
 import Nav_bar from "@/components/nav_bar";
+import {redirect} from "next/navigation";
 
 //存放菜品的全局变量
 let dishes = []
@@ -19,19 +20,38 @@ const URL = localURL
 let dishesInfo = null
 
 
-export async function getServerSideProps() {
-    //向后端请求
-    const res = await fetch(URL + "/dishesInfo")
-    const data = await res.json()
+export async function getServerSideProps(context) {
+  try {
+    // 向后端请求
+    const res = await fetch(URL + "/dishesInfo");
+    const data = await res.json();
+
+    // 返回数据
     return {
-        props: {
-            data
-        }
-    }
+      props: {
+        data
+      }
+    };
+  } catch (error) {
+    // 捕获错误时进行重定向
+    context.res.writeHead(302, {
+      Location: '/'
+    });
+    context.res.end();
+
+    // 在这里添加一个 return 语句，确保函数不会继续执行下去
+    return {
+      props: {}
+    };
+  }
 }
 
 export default function Dishes({data}) {
 
+    if(!data){
+        window.location.href='/'
+        return
+    }
     dishes = data.dishes
     // 获取所有商家
     let shops = new Set()
