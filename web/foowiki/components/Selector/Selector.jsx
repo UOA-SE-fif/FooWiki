@@ -7,9 +7,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./style.css";
 
-export const Selector = ({ className, text = "1st Floor" }) => {
+export const Selector = ({ className,name, options, onChange, id,defaultValue}) => {
   return (
-    <div className={`selector ${className}`}>
+    /*<div className={`selector ${className}`}>
       <div className="element-floor">{text}</div>
       <div className="group">
         <div className="overlap-group">
@@ -17,7 +17,15 @@ export const Selector = ({ className, text = "1st Floor" }) => {
           <img className="line-2" alt="Line" src="/img/line-3-3.svg" />
         </div>
       </div>
-    </div>
+    </div>*/
+      // <div className="container">
+      <select className="form-select selector" name={name} id={id} onChange={onChange} >
+          <option value="0">{defaultValue}</option>
+          {options.map((option, index) => {
+                    return <option key={index} value={option}>{option}</option>
+                })}
+      </select>
+      // </div>
   );
 };
 

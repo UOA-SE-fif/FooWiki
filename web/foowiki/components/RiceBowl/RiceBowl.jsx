@@ -5,14 +5,14 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 
 import React from "react";
 
-export const RiceBowl = ({ className }) => {
+export const RiceBowl = ({ className,height,width,viewBox }) => {
   return (
     <svg
       className={`rice-bowl ${className}`}
       fill="none"
-      height="16"
+      height={height}
       viewBox="0 0 16 16"
-      width="16"
+      width={width}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

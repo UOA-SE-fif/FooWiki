@@ -13,7 +13,7 @@
   left: 0;
   letter-spacing: 0.12px;
   line-height: normal;
-  position: absolute;
+  /*position: absolute;*/
   text-shadow: 3px 4px 5px #dbc694;
   top: -1px;
   width: 200px;

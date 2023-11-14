@@ -1,15 +1,18 @@
 import React, {createRef} from "react"
 import {createRoot} from "react-dom/client"
-import Container from "@/components/container";
-import Selector from "@/components/dropdown_selector";
-// import {Selector} from "@/components/Selector";
+import {redirect} from "next/navigation";
 import "./scss/dishes.css"
+
+import Container from "@/components/container";
+import PCSelector from "@/components/dropdown_selector";
+import {Selector} from "@/components/Selector" ;
 import Nav_bar from "@/components/nav_bar";
 import {Title} from "@/components/Title";
-import {redirect} from "next/navigation";
-import useScreenSize from "@/Hook/useScreenSize";
 import {NavBar} from "@/components/NavBar";
 import {DishesCard} from "@/components/DishesCard";
+
+import useScreenSize from "@/Hook/useScreenSize";
+import disableScroll from "@/Hook/disableScroll";
 
 //屏幕改变的阈值
 const changeSize = 500
@@ -55,6 +58,7 @@ export async function getServerSideProps(context) {
 
 const DishesPage = ({screenWidth, screenHeight, data}) => {
 
+    console.log(screenWidth, ' ', screenHeight)
     if (!data) {
         window.location.href = '/'
         return
@@ -73,7 +77,7 @@ const DishesPage = ({screenWidth, screenHeight, data}) => {
     })
     floors = Array.from(new Set(floors))
     // 初始化菜品列表
-    if (screenWidth >= changeSize) {
+    if (screenWidth > changeSize) {
         dishesInfo = dishes.map((item, index) => {
             return (<tr key={index}>
                 <td>{item.dishname}</td>
@@ -84,37 +88,47 @@ const DishesPage = ({screenWidth, screenHeight, data}) => {
                 <td>{item.type}</td>
             </tr>)
         })
-    }
-    else {
+    } else {
         dishesInfo = dishes.map((item, index) => {
-            return (<DishesCard item={item}></DishesCard>)
+            return (
+                <div className="row mb-2">
+                    <DishesCard item={item} className=""></DishesCard>
+                </div>
+            )
         })
     }
 
     // 等待后端返回数据再渲染
     if (screenWidth <= changeSize) {
         return (
-            <div>
-                <NavBar linkAdress=""></NavBar>
-                <div>
-                    <Title text="Floor"/>
-                    {/*<Selector className="selector-2" text="1st Floor"/>*/}
-                    <Title className="title-2" text="Sellers"/>
-                    {/*<Selector className="selector-instance" text="Seller Names"/>*/}
-                    <Title className="title-3" text="Price"/>
-
-                    <div className="element-floor-wrapper">
-                        <div className="element-st-floor">Low Price</div>
-                    </div>
-                    <div className="component">
-                        <div className="element-st-floor">High Price</div>
-                    </div>
-                    <div className="text-wrapper-6">~</div>
-                    <div className="text-wrapper-7">More</div>
-
+            <div className="container-fluid h-100" style={{overflow: "hidden", height: "25vh"}}>
+                <NavBar className="" linkAdress=""></NavBar>
+                <div className="row mt-4 mx-auto h-25">
                     <div>
-                        {dishesInfo}
+                        <Title text="Floor"/>
+                        <Selector className="selector-2" onChange={()=>{change(screenHeight,screenWidth)}} options={floors} name="楼层" id="floor" defaultValue="1st Fooler"/>
+                        <Title className="" text="Sellers"/>
+                        <Selector className="selector-instance" onChange={()=>{change(screenHeight,screenWidth)}} options={shops} name="商家" id="shop" defaultValue="seller name"/>
+                        <Title className="" text="Price"/>
+                        <div className="row">
+                            <div className="col-5">
+                                <input className="form-control" type="number" name="priceLeft" id="priceLeft"
+                                   placeholder="Low Price"
+                                   onChange={()=>{change(screenHeight,screenWidth)}}></input>
+                            </div>
+                            <div className="col-2 ">~</div>
+                            <div className="col-5">
+                            <input className="form-control col-4" type="number" name="priceRight" id="priceRight"
+                                   placeholder="High Price"
+                                   onChange={()=>{change(screenHeight,screenWidth)}}></input>
+                            </div>
+                        </div>
+                        <div className="">More</div>
                     </div>
+                </div>
+                <div className="row mx-auto h-50 d-flex justify-content-center"
+                     style={{overflowX: "hidden", overflowY: "auto", maxHeight: "40vh"}} id="dishesInfo">
+                    {dishesInfo}
                 </div>
             </div>
         )
@@ -124,16 +138,16 @@ const DishesPage = ({screenWidth, screenHeight, data}) => {
                 <Nav_bar></Nav_bar>
                 <Container>
                     <div className="row">
-                        <Selector name="楼层" options={floors} onChange={change} id={"floor"}/>
-                        <Selector name="商家" options={shops} onChange={change} id={"shop"}/>
+                        <PCSelector name="楼层" options={floors} onChange={()=>{change(screenHeight,screenWidth)}} id={"floor"}/>
+                        <PCSelector name="商家" options={shops} onChange={()=>{change(screenHeight,screenWidth)}} id={"shop"}/>
                         <div className="col-2 flex">
                             <label htmlFor="price">价格</label>
                             <input className="form-control" type="number" name="priceLeft" id="priceLeft"
                                    placeholder="最低价格"
-                                   onChange={change}></input>
+                                   onChange={()=>{change(screenHeight,screenWidth)}}></input>
                             <input className="form-control" type="number" name="priceRight" id="priceRight"
                                    placeholder="最高价格"
-                                   onChange={change}></input>
+                                   onChange={()=>{change(screenHeight,screenWidth)}}></input>
                         </div>
                     </div>
 
@@ -160,7 +174,30 @@ const DishesPage = ({screenWidth, screenHeight, data}) => {
     }
 }
 
-export function change() {
+//电脑端菜品列表的实现
+function addDishesPC(num,dish){
+    return (
+        <tr key={num}>
+            <td>{dish.dishname}</td>
+            <td>{dish.describe}</td>
+            <td>{dish.price}</td>
+            <td>{dish.shopname}</td>
+            <td>{dish.floor}</td>
+            <td>{dish.type}</td>
+        </tr>
+    )
+}
+
+//移动端的菜品列表实现
+function addDishesPhone(num,dish){
+    return (
+        <div className="row mb-2">
+            <DishesCard item={dish} className=""></DishesCard>
+        </div>
+    )
+}
+
+export function change(screenHeight,screenWidth) {
     if (!root) root = createRoot(document.getElementById("dishesInfo"))
     dishTable = []
     // 获取所有筛选信息
@@ -190,14 +227,11 @@ export function change() {
         //有小无大比小的大
         else if (minPrice && !maxPrice && dish.price < minPrice) continue
 
-        dishTable.push(<tr key={i}>
-            <td>{dish.dishname}</td>
-            <td>{dish.describe}</td>
-            <td>{dish.price}</td>
-            <td>{dish.shopname}</td>
-            <td>{dish.floor}</td>
-            <td>{dish.type}</td>
-        </tr>)
+        if(screenWidth<=changeSize){
+            dishTable.push(addDishesPhone(i,dish))
+        }else{
+            dishTable.push(addDishesPC(i,dish))
+        }
     }
 
     //重写表
@@ -206,5 +240,6 @@ export function change() {
 
 export default function Dishes({data}) {
     const screenSize = useScreenSize();
+    disableScroll();
     return <DishesPage screenHeight={screenSize.height} screenWidth={screenSize.width} data={data}></DishesPage>
 }

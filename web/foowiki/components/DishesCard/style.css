@@ -4,10 +4,10 @@
   border-color: #553d00;
   border-radius: 8px;
   box-shadow: 3px 4px 5px #dac693;
-  height: 131px;
-  /*position: relative;*/
+  /*height: 131px;*/
+  position: relative;
   display: flex;
-  width: 366px;
+  /*width: 366px;*/
 }
 
 .dishes-card .dishes-pic {
