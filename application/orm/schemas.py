@@ -61,13 +61,29 @@ class BaseResponse(BaseModel):
 
 
 class LoginResponse(BaseResponse):
-    pass
+    """
+    status: int
+    message: str
+    data: {
+        token: str
+    }
+    """
+    data: dict
 
 
 class RegisterResponse(BaseResponse):
+    """
+    status: int
+    message: str
+    """
     pass
 
 
 class DishesResponse(BaseResponse):
     dishes: list[DishesBase]
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
 
