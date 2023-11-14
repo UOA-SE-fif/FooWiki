@@ -1,5 +1,5 @@
 import pandas as pd
-from application.core import add_dishes
+from application.orm.crud.add_dishes import add_dishes
 from application.orm import schemas
 
 

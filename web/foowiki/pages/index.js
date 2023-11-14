@@ -69,8 +69,6 @@ const HomePage = ({screenWidth, screenHeight,userData}) => {
                     </div>
                     <div>
                         <div>Recommendation</div>
-                        <DishesCard className="dishes-card-instance" />
-                        <DishesCard className="design-component-instance-node" />
                     </div>
                     <div>
                         <Title className="title-instance" text="Canteens"/>
