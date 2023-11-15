@@ -1,1 +1,10 @@
-{"version":3,"sourceRoot":"","sources":["dishes.scss"],"names":[],"mappings":"AAGE;EACE;;;AAIJ;EACE;;;AAGF;EACE","file":"dishes.css"}
+{
+    "version": 3,
+    "mappings": "ACGA,AAAA,mBAAmB,CAAC;EAClB,WAAW,EAAE,MAAM;CACpB;;AAGD,AAAA,uBAAuB,CAAC;EACtB,eAAe,EAAE,MAAM;CACxB;;ADRD,AAAA,IAAI,CAAC;EAED,UAAU,EAAE,wCAAwC;CACvD;;AAED,AAEE,UAFQ,CAER,KAAK,CAAC;EACJ,WAAW,EAAE,GAAG;CACjB;;AAGH,AAAA,KAAK,CAAC;EACJ,UAAU,EAAE,IAAI;CACjB;;AAED,AAAA,MAAM,CAAC;EACL,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "dishes.scss",
+        "utilities.scss"
+    ],
+    "names": [],
+    "file": "dishes.css"
+}
