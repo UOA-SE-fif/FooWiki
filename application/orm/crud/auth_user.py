@@ -1,55 +1,136 @@
-from application.orm.models import *
-from sqlalchemy.orm import Session
 import hashlib
+from sqlalchemy.orm import Session
 
-# Todo: 使用router传入的db连接数据库
-db = SessionLocal()
+from application.orm import models
 
 
-def register_user(username, password):
+def register_user(username: str, email: str, password: str, db: Session):
     """
-    注册用户
-    :param username: 用户名
-    :param password: 密码
-    :return: 注册成功返回0，否则返回状态码
+    用户注册账号
+    @param username: str, 用户账户名
+    @param email: str, 用户邮箱号
+    @param password: str, 用户密码
+    @param db: Session, router传入的db，用于链接数据库
+    @return: 0 成功注册
+             201 用户名/邮箱已经被注册
+             202 其他错误
     """
-    # SHA256加密
-    password = hashlib.sha256(password.encode("utf-8")).hexdigest()
-    # 创建用户
-    user = UserAuth(username=username, user_password=password)
-    # 检查用户是否存在
-    if db.query(UserAuth).filter(UserAuth.username == username).first():
+    password = hashlib.sha256(password.encode("utf-8")).hexdigest()  # SHA256加密
+    user = models.UserAuth(
+        username=username,
+        user_password=password,
+        useremail=email
+    )  # 创建用户
+    if db.query(models.UserAuth).filter(models.UserAuth.username == username).first():
+        # 检查用户名是否存在
         return 201
+    if db.query(models.UserAuth).filter(models.UserAuth.useremail == email).first():
+        # 检查用户邮箱是否存在
+        return 201
+    db.add(user)
     try:
-        db.add(user)
         db.commit()
         return 0
-    except Exception as e:
-        print(e)
+    except Exception as error:
+        db.rollback()
+        print(error)
         return 202
 
 
-def login_user(username, password):
+def login_user(username: str, password: str, db: Session):
     """
-    登录账号
-    :param username: 用户名
-    :param password: 密码
-    :return: 登录成功返回0，否则返回状态码
+    用户登录账户
+    @param username: str, 用户账户名
+    @param password: str, 用户密码
+    @param db: Session, router传入的db，用于链接数据库
+    @return: 0 成功登录
+             203 密码不匹配
+             204 其他错误
     """
-    # SHA256加密
-    password = hashlib.sha256(password.encode("utf-8")).hexdigest()
-    user = db.query(UserAuth).filter(UserAuth.username == username).first()
+    password = hashlib.sha256(password.encode("utf-8")).hexdigest()  # SHA256加密
+    user = db.query(models.UserAuth).filter(models.UserAuth.username == username).first()  # 检查用户是否存在
     if user:
         if user.user_password == password:
-            return 203
+            return 0
         else:
-            return 1
+            return 203  # 密码不匹配
     else:
         return 204
 
 
-def get_user(username: str, database: Session):
-    user = db.query(UserAuth).filter(UserAuth.username == username).first()
+def change_user_data(
+        username_origin: str,
+        username: str,
+        email: str,
+        avatar: str,
+        appetite: float,
+        flavor: list[str],
+        db: Session
+):
+    """
+    修改用户信息
+    @param username_origin: str, 用户原账户名
+    @param username: str, 用户账户名
+    @param email: str, 用户邮箱号
+    @param avatar: str, 用户头像地址
+    @param appetite: float, 用户饭量
+    @param flavor: list[str], 用户口味
+    @param db: Session, router传入的db，用于链接数据库
+    @return: 0 成功更改
+             201 邮箱/用户名已经注册
+             202 其他错误
+    """
+    user = get_user(username_origin)
+    if db.query(models.UserAuth).filter(models.UserAuth.username == username).first():
+        return 201
+    if db.query(models.UserAuth).filter(models.UserAuth.useremail == email).first():
+        return 201
+    if user:
+        user.username = username
+        user.useremail = email
+        user.useravatar = avatar
+        user.appetite = appetite
+        user.flavor = flavor
+        try:
+            db.commit()
+            return 0
+        except Exception as error:
+            print(error)
+            db.rollback()
+            return 202
+    else:
+        return 202
+
+
+def get_user(username: str, db: Session):
+    """
+    根据用户名获取用户
+    @param username: str, 待查用户名
+    @param db: Session, router传入的db，用于链接数据库
+    @return: UserAuth, 查找到的用户
+    """
+    user = db.query(models.UserAuth).filter(models.UserAuth.username == username).first()
     return user
+
+
+def authenticate_user(username: str, password: str, db: Session):
+    """
+    用户鉴权
+    @param username: str, 用户账户名
+    @param password: str, 用户密码
+    @param db: Session, router传入的db，用于链接数据库
+    @return: UserAuth, 鉴权后确定可以返回的用户信息
+    """
+    password = hashlib.sha256(password.encode("utf-8")).hexdigest()
+    user = get_user(username=username, db=db)
+    print(user)
+    if not user:
+        return False
+    if not user.user_password == password:
+        return False
+    return user
+
+
+
 
 

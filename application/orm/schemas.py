@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings
+from typing import Union
 
 
 class BaseConfig(BaseSettings):
@@ -7,83 +8,169 @@ class BaseConfig(BaseSettings):
     SQLALCHEMY_POOL_RECYCLE: int = 3600
 
 
+class Token(BaseModel):
+    """
+    token: str
+    """
+    token: str
+
+
+class BaseResponse(BaseModel):
+    """
+    code: int
+    message: str
+    data: Any
+    """
+    code: int
+    message: str
+    data: Union[dict, list, any] = None
+
+
 class UserBase(BaseModel):
     """
-    userid: int
-    username: str
+    userid int
+    username str
+    email str
+    avatar str
+    appetite float
+    flavor list(str)
     """
     userid: int = None
     username: str
+    email: str
+    avater: str
+    appetite: float
+    flavor: list[str]
 
 
 class UserAuth(UserBase):
     """
-    userid: int
-    username: str
-    user_password: str
+    userid int
+    username str
+    email str
+    avatar str
+    appetite float
+    flavor list(str)
+    password str
     """
-    user_password: str
+    password: str
 
 
 class UserLogin(BaseModel):
+    """
     username: str
     password: str
+    """
+    username: str
+    password: str
+
+
+class UserRegister(BaseModel):
+    """
+    username: str
+    email: str
+    password: str
+    """
+    username: str
+    email: str
+    password: str
+
+
+class UserInfo(BaseModel):
+    """
+    username str|None
+    email str|None
+    avatar str|None
+    appetite float|None
+    flavor list(str)|None
+    可以选择更改部分用户信息
+    """
+    username: Union[str, None]
+    email: Union[str, None]
+    avater: Union[str, None]
+    appetite: Union[float, None]
+    flavor: Union[list[str], None]
+
+
+class LoginResponse(BaseResponse):
+    """
+    code: int
+    message: str
+    data: {
+        token: str
+    }
+    """
+    data: Token
+
+
+class RegisterResponse(BaseResponse):
+    """
+    code: int
+    message: str
+    data: None
+    """
+    pass
+
+
+class InfoResponse(BaseResponse):
+    """
+    code: int
+    message: str
+    data: {
+        username: str
+        email: str
+        avatar: str
+        appetite: float
+        flavor: list[string]
+    }
+    """
+    data: UserInfo
 
 
 class DishesBase(BaseModel):
     """
     dishid: int
     dishname: str
+    pic: str
     describe: str
     price: float
     shopname: str
     floor: int
-    type: str
+    flavor: list(str)
     satiety: int
     vegetables: int
     meat: int
+    # type: str
     """
     dishid: int = None
     dishname: str
+    pic: str
     describe: str = ''
     price: float
     shopname: str
     floor: int
-    type: str
+    flavor: list[str]
     satiety: int
     vegetables: int
     meat: int
-
-
-class BaseResponse(BaseModel):
-    status: int
-    message: str
-
-
-class LoginResponse(BaseResponse):
-    """
-    status: int
-    message: str
-    data: {
-        token: str
-    }
-    """
-    data: dict
-
-
-class RegisterResponse(BaseResponse):
-    """
-    status: int
-    message: str
-    """
-    pass
+    # type: str
 
 
 class DishesResponse(BaseResponse):
-    dishes: list[DishesBase]
+    """
+    code: int
+    message: str
+    data: {[
+        DishesBase,
+        ...
+    ]}
+    """
+    data: list[DishesBase]
 
 
-class Token(BaseModel):
-    access_token: str
-    token_type: str
-
+class DishResponse(BaseResponse):
+    """
+    code: int
+    message: str
+    """
+    data: None

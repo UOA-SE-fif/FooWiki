@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="198b5f40-aa89-4c97-9aee-abbd56469f52" name="更改" comment="将crud移至orm层&#10;重写sqlalchemy的Session类使提交失败时回滚">
-      <change afterPath="$PROJECT_DIR$/application/core/security.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FooWiki.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FooWiki.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/core/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/security.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/orm/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/orm/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/orm/crud/auth_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/orm/crud/auth_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/orm/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/orm/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/orm/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/orm/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/orm/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/orm/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/routes/dishes_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/dishes_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/routes/user_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/user_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
@@ -23,6 +27,17 @@
       <list>
         <option value="Python Script" />
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
@@ -45,20 +60,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "git-widget-placeholder": "dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.run">
     <configuration name="import_xlsx" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FooWiki" />
@@ -122,6 +138,10 @@
       <updated>1699771140558</updated>
       <workItem from="1699771142993" duration="2118000" />
       <workItem from="1699947853615" duration="13204000" />
+      <workItem from="1699967447460" duration="1161000" />
+      <workItem from="1699972529290" duration="16000" />
+      <workItem from="1699972550362" duration="602000" />
+      <workItem from="1700017761812" duration="27256000" />
     </task>
     <task id="LOCAL-00001" summary="将crud移至orm层&#10;重写sqlalchemy的Session类使提交失败时回滚">
       <option name="closed" value="true" />
