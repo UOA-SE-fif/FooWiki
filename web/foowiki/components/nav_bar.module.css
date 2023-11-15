@@ -1,0 +1,25 @@
+.navbar {
+  opacity: 0.8;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: #ffffff;
+}
+
+.navbar .navbar_btn {
+  font-size: 14px;
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar .navbar_btn:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+/*# sourceMappingURL=nav_bar.module.css.map */

@@ -26,7 +26,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  margin-left:auto;
+  margin-left:0;
   /*position: absolute;*/
   /*top: 16px;*/
   width: 32px;
@@ -65,8 +65,8 @@
 
 .nav-bar .list-2 {
   height: 40px !important;
-  left: 15px !important;
-  position: absolute !important;
-  top: 16px !important;
+  margin-left: 5px !important;
+  /*position: absolute !important;*/
+  margin-top: 5px !important;
   width: 40px !important;
 }
