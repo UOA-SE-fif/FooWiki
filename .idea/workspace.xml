@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="198b5f40-aa89-4c97-9aee-abbd56469f52" name="更改" comment="将crud移至orm层&#10;重写sqlalchemy的Session类使提交失败时回滚">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/orm/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/orm/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/orm/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/orm/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/routes/user_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/user_api.py" afterDir="false" />
-    </list>
+    <list default="true" id="198b5f40-aa89-4c97-9aee-abbd56469f52" name="更改" comment="将crud移至orm层&#10;重写sqlalchemy的Session类使提交失败时回滚" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,6 +133,7 @@
       <workItem from="1700059840991" duration="35000" />
       <workItem from="1700059940161" duration="2610000" />
       <workItem from="1700123122159" duration="1805000" />
+      <workItem from="1700127034545" duration="329000" />
     </task>
     <task id="LOCAL-00001" summary="将crud移至orm层&#10;重写sqlalchemy的Session类使提交失败时回滚">
       <option name="closed" value="true" />
