@@ -118,7 +118,7 @@ async def login(schema: schemas.UserLogin, db: Session = Depends(get_db)):
             username=username,
             password=password
         )
-        token = await login_for_access_token(form_data=form_data)
+        token = await login_for_access_token(form_data=form_data, db=db)
         access_token = token.token
         response = schemas.LoginResponse(
             code=code,
