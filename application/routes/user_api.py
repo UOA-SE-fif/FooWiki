@@ -98,7 +98,7 @@ async def register(schema: schemas.UserRegister, db: Session = Depends(get_db)):
 
 
 @router_user.put('/login', response_model=schemas.LoginResponse)
-async def login(schema: schemas.UserLogin, db: Session = Depends(get_db())):
+async def login(schema: schemas.UserLogin, db: Session = Depends(get_db)):
     """
     登录账号的路由
     @param schema: UserLogin
@@ -173,7 +173,7 @@ async def info_get():
 
 
 @router_user.post('/info', response_model=schemas.InfoResponse)
-async def info_post(schema: schemas.UserInfo, db: Session = Depends(get_db())):
+async def info_post(schema: schemas.UserInfo, db: Session = Depends(get_db)):
     """
     修改用户的信息
     @param schema: UserInfo 修改后的用户信息
