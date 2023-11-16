@@ -86,7 +86,7 @@ async def register(schema: schemas.UserRegister, db: Session = Depends(get_db)):
     """
     username = schema.username
     password = schema.password
-    email = schema.useremail
+    email = schema.email
     code = register_user(username=username, email=email, password=password, db=db)
     if code == 0:
         response = schemas.RegisterResponse(code=code, message='operation success')
