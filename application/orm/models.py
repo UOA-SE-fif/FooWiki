@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Float, ARRAY
+from sqlalchemy import Column, Integer, String, Float, JSON
+# from sqlalchemy import ARRAY
 # from sqlalchemy import ForeignKey
 # from sqlalchemy.orm import declarative_base, relationship
 # from sqlalchemy import create_engine
@@ -28,7 +29,8 @@ class UserBase(Base):  # 用户基本信息
     useremail = Column(String(100), nullable=False, unique=True)
     useravatar = Column(String(255))
     userappetite = Column(Float)
-    userflavor = Column(ARRAY(String))
+    # userflavor = Column(ARRAY(String))
+    userflavor = Column(JSON)
 
 
 class UserAuth(UserBase):  # 用户登录信息
@@ -74,7 +76,8 @@ class DishesBase(Base):  # 菜品基本信息
     price = Column(Float, nullable=False)
     shopname = Column(String(100), nullable=False)
     floor = Column(Integer, nullable=False)
-    flavor = Column(ARRAY(String))
+    # flavor = Column(ARRAY(String))
+    flavor = Column(JSON)
     satiety = Column(Integer, nullable=False)
     vegetables = Column(Integer, nullable=False)
     meat = Column(Integer, nullable=False)

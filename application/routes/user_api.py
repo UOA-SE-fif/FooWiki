@@ -85,7 +85,7 @@ async def register(schema: schemas.UserRegister, db: Session = Depends(get_db)):
         data: None
     """
     username = schema.username
-    password = schema.user_password
+    password = schema.password
     email = schema.useremail
     code = register_user(username=username, email=email, password=password, db=db)
     if code == 0:
@@ -111,7 +111,7 @@ async def login(schema: schemas.UserLogin, db: Session = Depends(get_db())):
         data: Token
     """
     username = schema.username
-    password = schema.user_password
+    password = schema.password
     code = login_user(username=username, password=password, db=db)
     if code == 0:
         form_data = OAuth2PasswordRequestForm(
@@ -119,10 +119,11 @@ async def login(schema: schemas.UserLogin, db: Session = Depends(get_db())):
             password=password
         )
         token = login_for_access_token(form_data=form_data)
+        access_token = token.token
         response = schemas.LoginResponse(
             code=code,
             message='operation success',
-            data=schemas.Token(token=token)
+            data=schemas.Token(token=access_token)
         )
     elif code == 203:
         response = schemas.LoginResponse(

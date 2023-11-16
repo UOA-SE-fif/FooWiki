@@ -23,7 +23,7 @@ class BaseResponse(BaseModel):
     """
     code: int
     message: str
-    data: Union[dict, list, any] = None
+    data: Union[dict, list] = None
 
 
 class UserBase(BaseModel):

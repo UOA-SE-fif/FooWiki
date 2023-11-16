@@ -1,1 +1,1 @@
-from security import create_access_token,settings
+from .security import create_access_token,settings
