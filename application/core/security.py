@@ -11,7 +11,7 @@ class Settings:
 
 
 settings = Settings()
-print(os.getenv("SECRET_KEY"))
+
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     """

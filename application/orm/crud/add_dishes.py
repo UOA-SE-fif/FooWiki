@@ -16,12 +16,10 @@ def add_dishes(dishes: list[schemas.DishesBase]):
             price=dish.price,
             shopname=dish.shopname,
             floor=dish.floor,
-            #type=dish.type,
+            type=dish.type,
             satiety=dish.satiety,
             vegetables=dish.vegetables,
-            meat=dish.meat,
-            pic=dish.pic,
-            flavor=dish.flavor
+            meat=dish.meat
         )
         # 检查菜品是否存在
         if db.query(models.DishesBase).filter(models.DishesBase.dishname == dish.dishname).first():
