@@ -1,10 +1,21 @@
-import {createRef} from "react"
+import React, {createRef} from "react"
 import {createRoot} from "react-dom/client"
-import Container from "@/components/container";
-import Selector from "@/components/dropdown_selector";
+import {redirect} from "next/navigation";
 import "./scss/dishes.css"
-import Nav_bar from "@/components/nav_bar";
 
+import Container from "@/components/container";
+import PCSelector from "@/components/dropdown_selector";
+import {Selector} from "@/components/Selector" ;
+import Nav_bar from "@/components/nav_bar";
+import {Title} from "@/components/Title";
+import {NavBar} from "@/components/NavBar";
+import {DishesCard} from "@/components/DishesCard";
+
+import useScreenSize from "@/Hook/useScreenSize";
+import disableScroll from "@/Hook/disableScroll";
+
+//屏幕改变的阈值
+const changeSize = 500
 //存放菜品的全局变量
 let dishes = []
 //菜品列表的html元素
@@ -14,25 +25,45 @@ let root
 //后端地址
 const localURL = "http://127.0.0.1:5000"
 const remoteURL = "http://175.178.154.171:5000"
-const URL = remoteURL
+const URL = localURL
 //菜品信息
 let dishesInfo = null
 
 
-export async function getServerSideProps() {
-    //向后端请求
-    const res = await fetch(URL + "/dishesInfo")
-    const data = await res.json()
-    return {
-        props: {
-            data
-        }
+export async function getServerSideProps(context) {
+    try {
+        // 向后端请求
+        const res = await fetch(URL + "/dishesInfo");
+        const data = await res.json();
+
+        // 返回数据
+        return {
+            props: {
+                data
+            }
+        };
+    } catch (error) {
+        // 捕获错误时进行重定向
+        context.res.writeHead(302, {
+            Location: '/'
+        });
+        context.res.end();
+
+        // 在这里添加一个 return 语句，确保函数不会继续执行下去
+        return {
+            props: {}
+        };
     }
 }
 
-export default function Dishes({data}) {
+const DishesPage = ({screenWidth, screenHeight, data}) => {
 
-    dishes = data.dishes
+    console.log(screenWidth, ' ', screenHeight)
+    if (!data) {
+        window.location.href = '/'
+        return
+    }
+    dishes = data.data
     // 获取所有商家
     let shops = new Set()
     dishes.forEach((item) => {
@@ -46,60 +77,148 @@ export default function Dishes({data}) {
     })
     floors = Array.from(new Set(floors))
     // 初始化菜品列表
-    dishesInfo = dishes.map((item, index) => {
-        return (<tr key={index}>
-            <td>{item.dishname}</td>
-            <td>{item.describe}</td>
-            <td>{item.price}</td>
-            <td>{item.shopname}</td>
-            <td>{item.floor}</td>
-            <td>{item.type}</td>
-        </tr>)
-    })
-
+    if (screenWidth > changeSize) {
+        dishesInfo = dishes.map((item, index) => {
+            return (<tr key={index}>
+                <td>{item.dishname}</td>
+                <td>{item.describe}</td>
+                <td>{item.price}</td>
+                <td>{item.shopname}</td>
+                <td>{item.floor}</td>
+            </tr>)
+        })
+    } else {
+        dishesInfo = dishes.map((item, index) => {
+            return (
+                <div className="row mb-2">
+                    <DishesCard item={item} className=""></DishesCard>
+                </div>
+            )
+        })
+    }
 
     // 等待后端返回数据再渲染
-    return (
-        <div>
-            <Nav_bar></Nav_bar>
-            <Container>
-                <div className="row">
-                    <Selector name="楼层" options={floors} onChange={change} id={"floor"}/>
-                    <Selector name="商家" options={shops} onChange={change} id={"shop"}/>
-                    <div className="col-2 flex">
-                        <label htmlFor="price">价格</label>
-                        <input className="form-control" type="number" name="priceLeft" id="priceLeft"
-                               placeholder="最低价格"
-                               onChange={change}></input>
-                        <input className="form-control" type="number" name="priceRight" id="priceRight"
-                               placeholder="最高价格"
-                               onChange={change}></input>
+    if (screenWidth <= changeSize) {
+        return (
+            <div className="container-fluid h-100" style={{overflow: "hidden", height: "25vh"}}>
+                <NavBar className="" linkAdress=""></NavBar>
+                <div className="row mt-4 mx-auto h-25">
+                    <div>
+                        <Title text="Floor"/>
+                        <Selector className="selector-2" onChange={() => {
+                            change(screenHeight, screenWidth)
+                        }} options={floors} name="楼层" id="floor" defaultValue="1st Fooler"/>
+                        <Title className="" text="Sellers"/>
+                        <Selector className="selector-instance" onChange={() => {
+                            change(screenHeight, screenWidth)
+                        }} options={shops} name="商家" id="shop" defaultValue="seller name"/>
+                        <Title className="" text="Price"/>
+                        <div className="row  justify-content-center align-items-center text-center">
+                            <div className="foowikiFont col-5">
+                                <input className="form-control input" type="number" name="priceLeft" id="priceLeft"
+                                       placeholder="Low Price"
+                                       onChange={() => {
+                                           change(screenHeight, screenWidth)
+                                       }}></input>
+                            </div>
+                            <div className="foowikiFont col-2" style={{fontSize:"40px"}}>~</div>
+                            <div className="foowikiFont col-5">
+                                <input className="form-control input" type="number" name="priceRight" id="priceRight"
+                                       placeholder="High Price"
+                                       onChange={() => {
+                                           change(screenHeight, screenWidth)
+                                       }}></input>
+                            </div>
+                        </div>
+                        <div className="row justify-content-center align-items-center text-center">
+                            <div className="col-12">
+                                <div className="more mb-0">more</div>
+                                <div className="">
+                                    <img className="arrowhead" alt="Line" src="/img/line-2.svg"/>
+                                    <img className="arrowhead" alt="Line" src="/img/line-3-3.svg"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div>
-                    <table className="table">
-                        <thead>
-                        <tr>
-                            <th>菜品名称</th>
-                            <th>描述</th>
-                            <th>价格</th>
-                            <th>商家</th>
-                            <th>楼层</th>
-                            <th>种类</th>
-                        </tr>
-                        </thead>
-                        <tbody id="dishesInfo">
-                        {dishesInfo}
-                        </tbody>
-                    </table>
+                <div className="row mx-auto h-50 d-flex justify-content-center"
+                     style={{overflowX: "hidden", overflowY: "auto", maxHeight: "40vh"}} id="dishesInfo">
+                    {dishesInfo}
                 </div>
-            </Container>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                <Nav_bar></Nav_bar>
+                <Container>
+                    <div className="row">
+                        <PCSelector name="楼层" options={floors} onChange={() => {
+                            change(screenHeight, screenWidth)
+                        }} id={"floor"}/>
+                        <PCSelector name="商家" options={shops} onChange={() => {
+                            change(screenHeight, screenWidth)
+                        }} id={"shop"}/>
+                        <div className="col-2 flex">
+                            <label htmlFor="price">价格</label>
+                            <input className="form-control" type="number" name="priceLeft" id="priceLeft"
+                                   placeholder="最低价格"
+                                   onChange={() => {
+                                       change(screenHeight, screenWidth)
+                                   }}></input>
+                            <input className="form-control" type="number" name="priceRight" id="priceRight"
+                                   placeholder="最高价格"
+                                   onChange={() => {
+                                       change(screenHeight, screenWidth)
+                                   }}></input>
+                        </div>
+                    </div>
+
+                    <div>
+                        <table className="table">
+                            <thead>
+                            <tr>
+                                <th>菜品名称</th>
+                                <th>描述</th>
+                                <th>价格</th>
+                                <th>商家</th>
+                                <th>楼层</th>
+                            </tr>
+                            </thead>
+                            <tbody id="dishesInfo">
+                            {dishesInfo}
+                            </tbody>
+                        </table>
+                    </div>
+                </Container>
+            </div>
+        )
+    }
+}
+
+//电脑端菜品列表的实现
+function addDishesPC(num, dish) {
+    return (
+        <tr key={num}>
+            <td>{dish.dishname}</td>
+            <td>{dish.describe}</td>
+            <td>{dish.price}</td>
+            <td>{dish.shopname}</td>
+            <td>{dish.floor}</td>
+        </tr>
+    )
+}
+
+//移动端的菜品列表实现
+function addDishesPhone(num, dish) {
+    return (
+        <div className="row mb-2">
+            <DishesCard item={dish} className=""></DishesCard>
         </div>
     )
 }
 
-export function change() {
+export function change(screenHeight, screenWidth) {
     if (!root) root = createRoot(document.getElementById("dishesInfo"))
     dishTable = []
     // 获取所有筛选信息
@@ -129,16 +248,19 @@ export function change() {
         //有小无大比小的大
         else if (minPrice && !maxPrice && dish.price < minPrice) continue
 
-        dishTable.push(<tr key={i}>
-            <td>{dish.dishname}</td>
-            <td>{dish.describe}</td>
-            <td>{dish.price}</td>
-            <td>{dish.shopname}</td>
-            <td>{dish.floor}</td>
-            <td>{dish.type}</td>
-        </tr>)
+        if (screenWidth <= changeSize) {
+            dishTable.push(addDishesPhone(i, dish))
+        } else {
+            dishTable.push(addDishesPC(i, dish))
+        }
     }
 
     //重写表
     root.render(dishTable)
+}
+
+export default function Dishes({data}) {
+    const screenSize = useScreenSize();
+    disableScroll({screenSize,changeSize});
+    return <DishesPage screenHeight={screenSize.height} screenWidth={screenSize.width} data={data}></DishesPage>
 }
