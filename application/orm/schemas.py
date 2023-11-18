@@ -38,7 +38,7 @@ class UserBase(BaseModel):
     userid: int = None
     username: str
     email: str
-    avater: str
+    avatar: str
     appetite: float
     flavor: list[str]
 
@@ -100,7 +100,7 @@ class LoginResponse(BaseResponse):
         token: str
     }
     """
-    data: Token
+    data: Union[Token, None]
 
 
 class RegisterResponse(BaseResponse):
@@ -109,7 +109,7 @@ class RegisterResponse(BaseResponse):
     message: str
     data: None
     """
-    pass
+    data: None
 
 
 class InfoResponse(BaseResponse):
@@ -124,7 +124,7 @@ class InfoResponse(BaseResponse):
         flavor: list[string]
     }
     """
-    data: Union[UserInfo,None]
+    data: Union[UserInfo, None]
 
 
 class DishesBase(BaseModel):
