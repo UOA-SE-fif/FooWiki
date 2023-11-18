@@ -3,9 +3,8 @@ from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from jose import JWTError, jwt
 from sqlalchemy.orm import Session
 
-
 from ..core import create_access_token, settings
-from ..orm import schemas
+from ..orm import schemas, models
 from ..orm import register_user, login_user, authenticate_user, get_user, change_user_data
 
 from ..orm.database import get_db
@@ -53,6 +52,7 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
         flavor list(str)
         password str
     """
+    print(oauth2_scheme)
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials"
@@ -141,7 +141,7 @@ async def login(schema: schemas.UserLogin, db: Session = Depends(get_db)):
 
 
 @router_user.get('/info', response_model=schemas.InfoResponse)
-async def info_get():
+async def info_get(user:models.UserAuth = Depends(get_current_user)):
     """
     获取当前用户的用户信息
     @return: InfoResponse
@@ -149,10 +149,7 @@ async def info_get():
         message: str
         data: UserInfo
     """
-    try:
-        user = get_current_user()
-    except Exception as error:
-        print(error)
+    if not user:
         return schemas.InfoResponse(
             code=1,
             message="operation fail, Could not validate credentials",
@@ -160,10 +157,10 @@ async def info_get():
         )
     user_data_temp = schemas.UserInfo(
         username=user.username,
-        email=user.email,
-        avatar=user.avatar,
-        appetite=user.appetite,
-        flavor=user.flavor
+        email=user.useremail,
+        avatar=user.useravatar,
+        appetite=user.userappetite,
+        flavor=user.userflavor
     )
     return schemas.InfoResponse(
         code=0,

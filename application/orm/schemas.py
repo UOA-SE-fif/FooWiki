@@ -87,7 +87,7 @@ class UserInfo(BaseModel):
     """
     username: Union[str, None]
     email: Union[str, None]
-    avater: Union[str, None]
+    avatar: Union[str, None]
     appetite: Union[float, None]
     flavor: Union[list[str], None]
 
@@ -124,7 +124,7 @@ class InfoResponse(BaseResponse):
         flavor: list[string]
     }
     """
-    data: UserInfo
+    data: Union[UserInfo,None]
 
 
 class DishesBase(BaseModel):

@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-const DisableScroll = () => {
+const DisableScroll = ({screenSize,changeSize}) => {
   useEffect(() => {
     // 禁用滚动
-    document.body.style.overflow = 'hidden';
+    if(screenSize<=changeSize)document.body.style.overflow = 'hidden';
 
     // 在组件卸载时恢复滚动
     return () => {

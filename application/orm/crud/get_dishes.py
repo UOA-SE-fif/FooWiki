@@ -19,9 +19,11 @@ def get_dishes():
             price=dish.price,
             shopname=dish.shopname,
             floor=dish.floor,
-            type=dish.type,
+            flavor=dish.flavor,
+#           type=dish.type,
             satiety=dish.satiety,
             vegetables=dish.vegetables,
-            meat=dish.meat
+            meat=dish.meat,
+            pic=dish.pic
         ))
     return dish_list

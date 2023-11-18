@@ -14,16 +14,37 @@ import React from "react";
 
 //响应的屏幕宽度
 const changeWidth = 500
+//url
+const localURL="http://127.0.0.1:5000"
+const remoteURL=""
+const URL = localURL
+
 
 export async function getServerSideProps(context){
     try {
     // 向后端请求
-    const userRes = await fetch(URL + "/user/info");
-    const userData= await userRes.json();
+        const headerCookies = context.req.headers.cookie
+        //拆cookies
+        const Cookies = headerCookies?headerCookies.split('; ').reduce((acc,cookies)=>{
+            const [name,value] = cookies.split('=')
+            acc[name] = decodeURIComponent(value)
+            return acc
+        },{}):{}
+        const fooWikiCookie = Cookies['fooWikiAuth']?Cookies['fooWikiAuth']:null
 
+        const userRes = await fetch(`${URL}/info`,{
+        method:"GET",
+        credentials: 'include',
+        headers:{
+            'Authorization':`Bearer ${fooWikiCookie}`
+        }
+        })
+
+        const userData = await userRes.json();
     // 返回数据
     return {
       props: {
+        fooWikiCookie,
         userData
       }
     };
@@ -34,8 +55,7 @@ export async function getServerSideProps(context){
   }
 }
 
-const HomePage = ({screenWidth, screenHeight,userData}) => {
-    //console.log(screenWidth, ' ', screenHeight)
+const HomePage = ({screenWidth, screenHeight,userData,fooWikiCookie}) => {
     if (screenWidth <= changeWidth) {
         return (
             <div>
@@ -95,7 +115,7 @@ const HomePage = ({screenWidth, screenHeight,userData}) => {
 }
 
 
-export default function Home() {
+export default function Home({fooWikiCookie,userData}) {
     const screenSize = useScreenSize();
-    return <HomePage screenHeight={screenSize.height} screenWidth={screenSize.width}></HomePage>
+    return <HomePage screenHeight={screenSize.height} screenWidth={screenSize.width} userData={userData} fooWikiCookie={fooWikiCookie}></HomePage>
 }

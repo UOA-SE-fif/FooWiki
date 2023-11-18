@@ -63,7 +63,7 @@ const DishesPage = ({screenWidth, screenHeight, data}) => {
         window.location.href = '/'
         return
     }
-    dishes = data.dishes
+    dishes = data.data
     // 获取所有商家
     let shops = new Set()
     dishes.forEach((item) => {
@@ -85,7 +85,6 @@ const DishesPage = ({screenWidth, screenHeight, data}) => {
                 <td>{item.price}</td>
                 <td>{item.shopname}</td>
                 <td>{item.floor}</td>
-                <td>{item.type}</td>
             </tr>)
         })
     } else {
@@ -184,7 +183,6 @@ const DishesPage = ({screenWidth, screenHeight, data}) => {
                                 <th>价格</th>
                                 <th>商家</th>
                                 <th>楼层</th>
-                                <th>种类</th>
                             </tr>
                             </thead>
                             <tbody id="dishesInfo">
@@ -207,7 +205,6 @@ function addDishesPC(num, dish) {
             <td>{dish.price}</td>
             <td>{dish.shopname}</td>
             <td>{dish.floor}</td>
-            <td>{dish.type}</td>
         </tr>
     )
 }
@@ -264,6 +261,6 @@ export function change(screenHeight, screenWidth) {
 
 export default function Dishes({data}) {
     const screenSize = useScreenSize();
-    disableScroll();
+    disableScroll({screenSize,changeSize});
     return <DishesPage screenHeight={screenSize.height} screenWidth={screenSize.width} data={data}></DishesPage>
 }
