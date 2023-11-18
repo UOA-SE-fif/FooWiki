@@ -109,7 +109,7 @@ class RegisterResponse(BaseResponse):
     message: str
     data: None
     """
-    data: None
+    pass
 
 
 class InfoResponse(BaseResponse):
