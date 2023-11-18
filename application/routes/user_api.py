@@ -141,7 +141,7 @@ async def login(schema: schemas.UserLogin, db: Session = Depends(get_db)):
 
 
 @router_user.get('/info', response_model=schemas.InfoResponse)
-async def info_get(user: schemas.UserAuth = Depends(get_current_user())):
+async def info_get(user: schemas.UserAuth = Depends(get_current_user)):
     """
     获取当前用户的用户信息
     @param user: 从前端Header获取的当前用户信息
@@ -173,7 +173,7 @@ async def info_get(user: schemas.UserAuth = Depends(get_current_user())):
 @router_user.post('/info', response_model=schemas.InfoResponse)
 async def info_post(schema: schemas.UserInfo,
                     db: Session = Depends(get_db),
-                    user: schemas.UserAuth = Depends(get_current_user())
+                    user: schemas.UserAuth = Depends(get_current_user)
 ):
     """
     修改用户的信息
