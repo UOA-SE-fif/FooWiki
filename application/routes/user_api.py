@@ -32,7 +32,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     access_token = create_access_token(
         data={"sub": user.username}
     )
-    return schemas.Token(token=access_token)
+    return schemas.Token(token=access_token,token_type="bearer")
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")

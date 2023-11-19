@@ -1,7 +1,24 @@
 import styles from './nav_bar.module.scss'
 import Link from "next/link";
 
-export default function Nav_bar() {
+export default function Nav_bar({user}) {
+
+    let userMessage;
+    if(user.data){
+        userMessage = <div className="d-flex">
+                {user.data.username}
+        </div>
+    }else {
+        userMessage = <form className="d-flex" role="authentication">
+            <li className={styles.navbar_btn + " btn btn-outline-success"}>
+                <Link className="nav-link" href="/register">Sign up</Link>
+            </li>
+            <li className={styles.navbar_btn + " btn btn-outline-success"}>
+                <Link className="nav-link" href="/login">Sign in</Link>
+            </li>
+        </form>
+    }
+
     return (
         <nav className={styles.navbar + " navbar navbar-expand-lg navbar-light"}>
             <div className="container">
@@ -24,14 +41,7 @@ export default function Nav_bar() {
                             <Link className="nav-link disabled" href="#">Restaurants</Link>
                         </li>
                     </ul>
-                    <form className="d-flex" role="authentication">
-                        <li className={styles.navbar_btn + " btn btn-outline-success"}>
-                            <Link className="nav-link" href="/register">Sign up</Link>
-                        </li>
-                        <li className={styles.navbar_btn + " btn btn-outline-success"}>
-                            <Link className="nav-link" href="/login">Sign in</Link>
-                        </li>
-                    </form>
+                    {userMessage}
                 </div>
             </div>
         </nav>

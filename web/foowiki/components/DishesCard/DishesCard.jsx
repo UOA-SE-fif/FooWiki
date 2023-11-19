@@ -29,19 +29,19 @@ export const DishesCard = ({className, item}) => {
                         <div className="col-4">
                             <div className="row">
                                 <div className="col-4"><RiceBowl height={16} width={16}/></div>
-                                <div className="col-4 offset-1  d-flex align-items-center justify-content-center">{item.satiety ? item.satiety : "Num"}</div>
+                                <div className="col-4 offset-2  d-flex align-items-center justify-content-center">{item.satiety ? item.satiety : "Num"}</div>
                             </div>
                         </div>
                         <div className="col-4">
                             <div className="row">
                             <div className="col-4"><Meat3 className=""/></div>
-                            <div className="col-4  offset-1 d-flex align-items-center justify-content-center">{item.meat ? item.meat : "Num"}</div>
+                            <div className="col-4  offset-2 d-flex align-items-center justify-content-center">{item.meat ? item.meat : "Num"}</div>
                             </div>
                         </div>
                         <div className="col-4">
                             <div className="row">
                                 <div className="col-4"><Lettuce className=""/></div>
-                            <div className="col-4  offset-1 d-flex align-items-center justify-content-center">{item.vegetables ? item.vegetables : "Num"}</div>
+                            <div className="col-4  offset-2 d-flex align-items-center justify-content-center">{item.vegetables ? item.vegetables : "Num"}</div>
                             </div>
                         </div>
                     </div>

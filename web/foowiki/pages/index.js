@@ -59,7 +59,7 @@ const HomePage = ({screenWidth, screenHeight,userData,fooWikiCookie}) => {
     if (screenWidth <= changeWidth) {
         return (
             <div>
-                <NavBar linkAdress="/login"></NavBar>
+                <NavBar linkAdress="/login" userData={userData}></NavBar>
                 <div>
                     <div>
                         <Title text="Recent&nbsp;&nbsp;Comments"/>
@@ -101,7 +101,7 @@ const HomePage = ({screenWidth, screenHeight,userData,fooWikiCookie}) => {
     } else {
         return (
             <div>
-                <Nav_bar></Nav_bar>
+                <Nav_bar user={userData}></Nav_bar>
                 <Container>
                     <div className={"row vh-100"}>
                         <div className={"align-items-center d-flex"}>

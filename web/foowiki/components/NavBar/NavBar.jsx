@@ -9,7 +9,17 @@ import {Search} from "@/components/Search";
 import "./style.css";
 import Link from "next/link";
 
-export const NavBar = ({className, icon = <List2/>, linkAdress = ""}) => {
+export const NavBar = ({className, icon = <List2/>, linkAdress = "",userData}) => {
+    let userElement;
+    if(userData.data){
+        userElement = <div className="col-2 offset-1">
+                        <div className="user" href={linkAdress}></div>
+                    </div>
+    }else{
+        userElement = <div className="col-2 offset-1">
+                        <a className="user" href={linkAdress}></a>
+                    </div>
+    }
     return (
         <nav className={`nav-bar row d-flex flex-wrap align-items-center ${className}`}>
             <div className="col-9">
@@ -30,9 +40,7 @@ export const NavBar = ({className, icon = <List2/>, linkAdress = ""}) => {
                     <div className="col-1">
                         <Search className=""/>
                     </div>
-                    <div className="col-2 offset-1">
-                        <a className="user" href={linkAdress}></a>
-                    </div>
+                    {userElement}
                 </div>
             </div>
         </nav>

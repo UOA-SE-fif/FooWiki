@@ -36,10 +36,30 @@ export async function getServerSideProps(context) {
         const res = await fetch(URL + "/dishesInfo");
         const data = await res.json();
 
+        const headerCookies = context.req.headers.cookie
+        //拆cookies
+        const Cookies = headerCookies?headerCookies.split('; ').reduce((acc,cookies)=>{
+            const [name,value] = cookies.split('=')
+            acc[name] = decodeURIComponent(value)
+            return acc
+        },{}):{}
+        const fooWikiCookie = Cookies['fooWikiAuth']?Cookies['fooWikiAuth']:null
+
+        const userRes = await fetch(`${URL}/info`,{
+        method:"GET",
+        credentials: 'include',
+        headers:{
+            'Authorization':`Bearer ${fooWikiCookie}`
+        }
+        })
+
+        const userData = await userRes.json();
         // 返回数据
         return {
             props: {
-                data
+                data,
+                fooWikiCookie,
+                userData
             }
         };
     } catch (error) {
@@ -56,7 +76,7 @@ export async function getServerSideProps(context) {
     }
 }
 
-const DishesPage = ({screenWidth, screenHeight, data}) => {
+const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) => {
 
     console.log(screenWidth, ' ', screenHeight)
     if (!data) {
@@ -101,7 +121,7 @@ const DishesPage = ({screenWidth, screenHeight, data}) => {
     if (screenWidth <= changeSize) {
         return (
             <div className="container-fluid h-100" style={{overflow: "hidden", height: "25vh"}}>
-                <NavBar className="" linkAdress=""></NavBar>
+                <NavBar className="" linkAdress="/login" userData={userData}></NavBar>
                 <div className="row mt-4 mx-auto h-25">
                     <div>
                         <Title text="Floor"/>
@@ -150,7 +170,7 @@ const DishesPage = ({screenWidth, screenHeight, data}) => {
     } else {
         return (
             <div>
-                <Nav_bar></Nav_bar>
+                <Nav_bar user={userData}></Nav_bar>
                 <Container>
                     <div className="row">
                         <PCSelector name="楼层" options={floors} onChange={() => {
@@ -259,8 +279,12 @@ export function change(screenHeight, screenWidth) {
     root.render(dishTable)
 }
 
-export default function Dishes({data}) {
+export default function Dishes({data,userData,fooWikiCookie}) {
     const screenSize = useScreenSize();
     disableScroll({screenSize,changeSize});
-    return <DishesPage screenHeight={screenSize.height} screenWidth={screenSize.width} data={data}></DishesPage>
+    return <DishesPage screenHeight={screenSize.height}
+                       screenWidth={screenSize.width}
+                       data={data}
+                       userData={userData}
+                       fooWikiCookie={fooWikiCookie}></DishesPage>
 }
