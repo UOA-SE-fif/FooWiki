@@ -1,3 +1,4 @@
+import {createRef} from "react";
 import Container from "../components/container"
 import Form_card from "../components/form_card"
 import Image from "next/image";
@@ -6,9 +7,7 @@ import {username, password, confirm_password} from "../components/form_card";
 
 export default function Register() {
 
-    const localURL = "http://127.0.0.1:5000"
-    const remoteURL = "http://175.178.154.171:5000"
-    const URL = remoteURL
+    const URL = "http://127.0.0.1:5000"
 
 
     function register() {
@@ -57,10 +56,8 @@ export default function Register() {
                    fill
                    quality={100}
                    priority={true}
-                   style={{
-                       zIndex: -1,
-                       objectFit: "cover"
-                   }}
+                   style={{zIndex: -1,
+                   objectFit: "cover"}}
             ></Image>
         </Container>
     )

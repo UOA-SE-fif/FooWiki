@@ -1,7 +1,6 @@
-from application.orm.models import *
+from ...models.models import *
 import hashlib
 
-# Todo: 使用router传入的db连接数据库
 db = SessionLocal()
 
 
@@ -16,9 +15,6 @@ def register_user(username, password):
     password = hashlib.sha256(password.encode("utf-8")).hexdigest()
     # 创建用户
     user = UserAuth(username=username, user_password=password)
-    # 检查用户是否存在
-    if db.query(UserAuth).filter(UserAuth.username == username).first():
-        raise Exception("用户已存在")
     try:
         db.add(user)
         db.commit()

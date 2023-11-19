@@ -1,11 +1,12 @@
 from fastapi import APIRouter
-from ..orm import schemas, register_user, login_user
+from ..core import register_user
+from ..core import login_user
+from ..models import schemas
 
 
 router_user = APIRouter()
 
 
-# Todo: 使用orm.database.get_db()获取数据库连接
 @router_user.post('/register')
 async def register(schema: schemas.UserAuth):
     username = schema.username
@@ -18,7 +19,6 @@ async def register(schema: schemas.UserAuth):
     return response
 
 
-# Todo: 使用orm.database.get_db()获取数据库连接
 @router_user.put('/login')
 async def login(schema: schemas.UserAuth):
     username = schema.username

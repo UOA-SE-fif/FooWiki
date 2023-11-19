@@ -1,7 +1,5 @@
-from application.orm import models, schemas
-from ..database import SessionLocal
+from ...models import models, schemas, SessionLocal
 
-# Todo: 使用router传入的db连接数据库
 db = SessionLocal()
 
 
@@ -21,9 +19,6 @@ def add_dishes(dishes: list[schemas.DishesBase]):
             vegetables=dish.vegetables,
             meat=dish.meat
         )
-        # 检查菜品是否存在
-        if db.query(models.DishesBase).filter(models.DishesBase.dishname == dish.dishname).first():
-            raise Exception("菜品已存在")
         db.add(dish)
         db.commit()
     return True
