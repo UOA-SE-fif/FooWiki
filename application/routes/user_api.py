@@ -157,10 +157,10 @@ async def info_get(user: schemas.UserAuth = Depends(get_current_user)):
         )
     user_data_temp = schemas.UserInfo(
         username=user.username,
-        email=user.useremail,
-        avatar=user.useravatar,
-        appetite=user.userappetite,
-        flavor=user.userflavor
+        useremail=user.useremail,
+        useravatar=user.useravatar,
+        userappetite=user.userappetite,
+        userflavor=user.userflavor
     )
     return schemas.InfoResponse(
         code=0,
