@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from application.models.database import Base, SessionLocal
+from application.orm.database import Base, SessionLocal
 
 
 class UserBase(Base):  # 用户基本信息
@@ -28,7 +28,7 @@ class UserAuth(UserBase):  # 用户登录信息
             user_password varchar(32) not null
         );"""
 
-    user_password = Column(String(32), nullable=False)
+    user_password = Column(String(100), nullable=False)
 
 
 class DishesBase(Base):  # 菜品基本信息
@@ -59,22 +59,6 @@ class DishesBase(Base):  # 菜品基本信息
     satiety = Column(Integer, nullable=False)
     vegetables = Column(Integer, nullable=False)
     meat = Column(Integer, nullable=False)
-
-
-class Session(Base):  # 用户登录状态
-    """
-    table:
-        create table session (
-        sessionid varchar(32) primary key,
-        userid int not null
-        foreign key (userid) references users(userid)
-        );
-    """
-
-    __tablename__ = "session"
-    sessionid = Column(String(32), primary_key=True)
-    userid = Column(Integer, ForeignKey("users.userid"))
-    user = relationship("UserBase")
 
 
 def get_db():

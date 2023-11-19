@@ -24,3 +24,13 @@ create table `session` (
     `userid` int not null,
     foreign key (userid) references users(userid)
 );
+/*
+Todo:
+新建一个用户数据表，用于存储用户的个人信息：
+用户id：int
+用户名：varchar(100)
+创建时间：2019-12-15
+上次登陆时间：2019-12-15
+头像：blob
+饭量：int
+*/

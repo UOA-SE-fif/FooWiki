@@ -1,9 +1,11 @@
-from ...models import models, schemas, SessionLocal
+from application.orm import models, schemas
+from ..database import SessionLocal
 
+# Todo: 使用router传入的db连接数据库
 db = SessionLocal()
 
 
-def foods_dishes():
+def get_dishes():
     """
     :return: 以列表形式返回关于菜品的数据
     """
