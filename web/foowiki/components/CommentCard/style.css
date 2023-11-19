@@ -6,7 +6,7 @@
   box-shadow: 3px 4px 5px #dac693;
   height: 121px;
   position: relative;
-  width: 366px;
+  /*width: 366px;*/
 }
 
 .comment-card .div {
@@ -15,11 +15,11 @@
   font-size: 24px;
   font-weight: 400;
   height: 30px;
-  left: 18px;
+  /*left: 18px;*/
   letter-spacing: 0.12px;
   line-height: normal;
-  position: absolute;
-  top: 6px;
+  /*position: absolute;*/
+  /*top: 6px;*/
   width: 111px;
 }
 
@@ -29,12 +29,12 @@
   font-size: 24px;
   font-weight: 400;
   height: 30px;
-  left: 209px;
+  /*left: 209px;*/
   letter-spacing: 0.12px;
   line-height: normal;
-  position: absolute;
+  /*position: absolute;*/
   text-align: right;
-  top: 6px;
+  /*top: 6px;*/
   width: 129px;
 }
 
@@ -44,11 +44,11 @@
   font-size: 16px;
   font-weight: 400;
   height: 16px;
-  left: 18px;
+  /*left: 18px;*/
   letter-spacing: 0.08px;
   line-height: normal;
-  position: absolute;
-  top: 40px;
+  /*position: absolute;*/
+  /*top: 40px;*/
   white-space: nowrap;
   width: 180px;
 }

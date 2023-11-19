@@ -13,7 +13,6 @@ class Token(BaseModel):
     token: str
     """
     token: str
-    token_type:str
 
 
 class BaseResponse(BaseModel):

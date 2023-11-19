@@ -1,6 +1,6 @@
 .nav-bar {
   -webkit-backdrop-filter: blur(4px) brightness(100%);
-  backdrop-filter: blur(4px) brightness(100%);
+  /*backdrop-filter: blur(4px) brightness(100%);*/
   background-color: #ffcb4659;
   box-shadow: -1px 4px 9px 3px #88835b40;
   height: 64px;

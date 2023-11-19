@@ -13,7 +13,7 @@ export const NavBar = ({className, icon = <List2/>, linkAdress = "",userData}) =
     let userElement;
     if(userData.data){
         userElement = <div className="col-2 offset-1">
-                        <div className="user" href={linkAdress}></div>
+                        <img className="user" src={userData.data.useravatar}></img>
                     </div>
     }else{
         userElement = <div className="col-2 offset-1">
@@ -28,7 +28,7 @@ export const NavBar = ({className, icon = <List2/>, linkAdress = "",userData}) =
                         {icon}
                     </div>
                     <div className="col-4" style={{minWidth: "content"}}>
-                        <div className="text-wrapper-8">FooWiki</div>
+                        <a className="text-wrapper-8" href="/">FooWiki</a>
                     </div>
                     <div className="col-2 offset-2" style={{minWidth: "content"}}>
                         <Link className="nav-link" href="/dishes">Dishes</Link>

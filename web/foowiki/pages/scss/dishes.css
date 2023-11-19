@@ -61,4 +61,16 @@ select {
   height: 100%;
   vertical-align: top;
 }
+
+.canteens-container {
+  width: 366px;
+  height: 144px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #553D00;
+  background: rgba(255, 246, 223, 0.65);
+  -webkit-box-shadow: 3px 4px 5px 0px #DBC694;
+          box-shadow: 3px 4px 5px 0px #DBC694;
+}
 /*# sourceMappingURL=dishes.css.map */

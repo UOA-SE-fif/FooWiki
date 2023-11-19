@@ -32,7 +32,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     access_token = create_access_token(
         data={"sub": user.username}
     )
-    return schemas.Token(token=access_token,token_type="bearer")
+    return schemas.Token(token=access_token)
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
@@ -227,10 +227,10 @@ async def info_post(schema: schemas.UserInfo,
             user = get_user(username_origin, db)
             user_data_temp = schemas.UserInfo(
                 username=user.username,
-                email=user.useremail,
-                avatar=user.useravatar,
-                appetite=user.userappetite,
-                flavor=user.userflavor
+                useremail=user.useremail,
+                useravatar=user.useravatar,
+                userappetite=user.userappetite,
+                userflavor=user.userflavor
             )
         response = schemas.InfoResponse(
             code=0,

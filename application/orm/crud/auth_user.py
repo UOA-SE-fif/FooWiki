@@ -80,7 +80,7 @@ def change_user_data(
              201 邮箱/用户名已经注册
              202 其他错误
     """
-    user = get_user(username_origin)
+    user = get_user(username_origin,db)
     if db.query(models.UserAuth).filter(models.UserAuth.username == username).first():
         return 201
     if db.query(models.UserAuth).filter(models.UserAuth.useremail == email).first():
@@ -91,6 +91,7 @@ def change_user_data(
         user.useravatar = avatar
         user.userappetite = appetite
         user.userflavor = flavor
+        db.add(user)
         try:
             db.commit()
             return 0
