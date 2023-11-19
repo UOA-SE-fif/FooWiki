@@ -8,9 +8,9 @@ export default function Login() {
 
     const localURL = "http://127.0.0.1:5000"
     const remoteURL = "http://175.178.154.171:5000"
-    const URL = remoteURL
+    const URL = localURL
 
-    function login() {
+    async function login() {
         if (username.current.value === "" || password.current.value === "") {
             alert("请输入完整的信息")
             return
@@ -18,22 +18,22 @@ export default function Login() {
 
         let data = {
             "username": username.current.value,
-            "user_password": password.current.value
+            "password": password.current.value
         }
 
-        fetch(`${URL}/login`, {
-            method: "PUT",
+        const response = await fetch(`/api/login`, {
+            method: "POST",
             headers: {
                 "Content-type": "application/json"
             },
             body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(res => {
-                    alert("登录成功")
-                    window.location.href = "/dishes"
-                }
-            )
+            })
+        if(response.ok){
+            alert("登录成功")
+            window.location='/dishes'
+        }else{
+            alert("登录失败")
+        }
     }
 
     return (

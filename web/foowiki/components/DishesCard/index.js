@@ -1,0 +1,1 @@
+export { DishesCard } from "./DishesCard";

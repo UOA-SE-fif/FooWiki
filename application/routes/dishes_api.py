@@ -9,5 +9,6 @@ router_dish = APIRouter()
 @router_dish.get('/dishesInfo')
 async def get_dishes():
     dishes_list = get_dish()
-    response = schemas.DishesResponse(dishes = dishes_list,status=1,message="获取成功")
+    print(dishes_list)
+    response = schemas.DishesResponse(data = dishes_list,code=1,message="获取成功")
     return response
