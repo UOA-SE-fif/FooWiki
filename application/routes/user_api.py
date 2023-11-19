@@ -4,7 +4,7 @@ from jose import JWTError, jwt
 from sqlalchemy.orm import Session
 
 from ..core import create_access_token, settings
-from ..orm import schemas, models
+from ..orm import schemas
 from ..orm import register_user, login_user, authenticate_user, get_user, change_user_data
 
 from ..orm.database import get_db
@@ -46,13 +46,12 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     @return: UserAuth 当前用户的信息
         userid int
         username str
-        email str
-        avatar str
-        appetite float
-        flavor list(str)
-        password str
+        useremail str
+        useravatar str
+        userappetite float
+        userflavor list(str)
+        user_password str
     """
-    print(oauth2_scheme)
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials"
@@ -76,8 +75,8 @@ async def register(schema: schemas.UserRegister, db: Session = Depends(get_db)):
     注册账户的路由
     @param schema: UserRegister
         username: str
-        email: str
-        password: str
+        useremail: str
+        user_password: str
     @param db: 路由传回的当前会话的db，获取数据库链接
     @return: RegisterResponse
         code: int
@@ -85,8 +84,8 @@ async def register(schema: schemas.UserRegister, db: Session = Depends(get_db)):
         data: None
     """
     username = schema.username
-    password = schema.password
-    email = schema.email
+    password = schema.user_password
+    email = schema.useremail
     code = register_user(username=username, email=email, password=password, db=db)
     if code == 0:
         response = schemas.RegisterResponse(code=code, message='operation success')
@@ -103,7 +102,7 @@ async def login(schema: schemas.UserLogin, db: Session = Depends(get_db)):
     登录账号的路由
     @param schema: UserLogin
         username: str
-        password: str
+        user_password: str
     @param db: 路由传回的当前会话的db，获取数据库链接
     @return: LoginResponse
         code: int
@@ -111,7 +110,7 @@ async def login(schema: schemas.UserLogin, db: Session = Depends(get_db)):
         data: Token
     """
     username = schema.username
-    password = schema.password
+    password = schema.user_password
     code = login_user(username=username, password=password, db=db)
     if code == 0:
         form_data = OAuth2PasswordRequestForm(
@@ -141,9 +140,10 @@ async def login(schema: schemas.UserLogin, db: Session = Depends(get_db)):
 
 
 @router_user.get('/info', response_model=schemas.InfoResponse)
-async def info_get(user:models.UserAuth = Depends(get_current_user)):
+async def info_get(user: schemas.UserAuth = Depends(get_current_user)):
     """
     获取当前用户的用户信息
+    @param user: 从前端Header获取的当前用户信息
     @return: InfoResponse
         code: int
         message: str
@@ -157,10 +157,10 @@ async def info_get(user:models.UserAuth = Depends(get_current_user)):
         )
     user_data_temp = schemas.UserInfo(
         username=user.username,
-        email=user.useremail,
-        avatar=user.useravatar,
-        appetite=user.userappetite,
-        flavor=user.userflavor
+        useremail=user.useremail,
+        useravatar=user.useravatar,
+        userappetite=user.userappetite,
+        userflavor=user.userflavor
     )
     return schemas.InfoResponse(
         code=0,
@@ -170,25 +170,26 @@ async def info_get(user:models.UserAuth = Depends(get_current_user)):
 
 
 @router_user.post('/info', response_model=schemas.InfoResponse)
-async def info_post(schema: schemas.UserInfo, db: Session = Depends(get_db)):
+async def info_post(schema: schemas.UserInfo,
+                    db: Session = Depends(get_db),
+                    user: schemas.UserAuth = Depends(get_current_user)
+                    ):
     """
     修改用户的信息
+    @param user: 从前端Header获取的当前用户信息
     @param schema: UserInfo 修改后的用户信息
         username str
-        email str
-        avatar str
-        appetite float
-        flavor list(str)
+        useremail str
+        useravatar str
+        userappetite float
+        userflavor list(str)
     @param db: 路由传回的当前会话的db，获取数据库链接
     @return: InfoResponse 修改后的用户所有信息
         code: int
         message: str
         data: UserInfo
     """
-    try:
-        user = get_current_user()
-    except Exception as error:
-        print(error)
+    if not user:
         return schemas.InfoResponse(
             code=1,
             message="operation fail, Could not validate credentials",
@@ -196,10 +197,10 @@ async def info_post(schema: schemas.UserInfo, db: Session = Depends(get_db)):
         )
     username_origin = user.username
     username = schema.username
-    email = schema.email
-    avatar = schema.avater
-    appetite = schema.appetite
-    flavor = schema.flavor
+    email = schema.useremail
+    avatar = schema.useravatar
+    appetite = schema.userappetite
+    flavor = schema.userflavor
     code = change_user_data(
         username_origin=username_origin,
         username=username,
@@ -217,19 +218,19 @@ async def info_post(schema: schemas.UserInfo, db: Session = Depends(get_db)):
         if user:
             user_data_temp = schemas.UserInfo(
                 username=user.username,
-                email=user.email,
-                avatar=user.avatar,
-                appetite=user.appetite,
-                flavor=user.flavor
+                email=user.useremail,
+                avatar=user.useravatar,
+                appetite=user.userappetite,
+                flavor=user.userflavor
             )
         else:
             user = get_user(username_origin, db)
             user_data_temp = schemas.UserInfo(
                 username=user.username,
-                email=user.email,
-                avatar=user.avatar,
-                appetite=user.appetite,
-                flavor=user.flavor
+                email=user.useremail,
+                avatar=user.useravatar,
+                appetite=user.userappetite,
+                flavor=user.userflavor
             )
         response = schemas.InfoResponse(
             code=0,

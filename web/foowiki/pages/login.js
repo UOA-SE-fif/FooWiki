@@ -18,7 +18,7 @@ export default function Login() {
 
         let data = {
             "username": username.current.value,
-            "password": password.current.value
+            "user_password": password.current.value
         }
 
         const response = await fetch(`/api/login`, {

@@ -127,7 +127,7 @@ const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) =>
                         <Title text="Floor"/>
                         <Selector className="selector-2" onChange={() => {
                             change(screenHeight, screenWidth)
-                        }} options={floors} name="楼层" id="floor" defaultValue="1st Fooler"/>
+                        }} options={floors} name="楼层" id="floor" defaultValue="Null"/>
                         <Title className="" text="Sellers"/>
                         <Selector className="selector-instance" onChange={() => {
                             change(screenHeight, screenWidth)

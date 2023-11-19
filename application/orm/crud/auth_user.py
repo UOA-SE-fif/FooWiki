@@ -89,8 +89,8 @@ def change_user_data(
         user.username = username
         user.useremail = email
         user.useravatar = avatar
-        user.appetite = appetite
-        user.flavor = flavor
+        user.userappetite = appetite
+        user.userflavor = flavor
         try:
             db.commit()
             return 0

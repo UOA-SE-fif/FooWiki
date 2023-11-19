@@ -23,8 +23,8 @@ export default function Register() {
 
         let data = {
             "username": username.current.value,
-            "email":email.current.value,
-            "password": password.current.value,
+            "useremail":email.current.value,
+            "user_password": password.current.value,
         }
 
         console.log(JSON.stringify(data))

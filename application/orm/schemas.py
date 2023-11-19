@@ -31,66 +31,66 @@ class UserBase(BaseModel):
     """
     userid int
     username str
-    email str
-    avatar str
-    appetite float
-    flavor list(str)
+    useremail str
+    useravatar str
+    userappetite float
+    userflavor list(str)
     """
     userid: int = None
     username: str
-    email: str
-    avater: str
-    appetite: float
-    flavor: list[str]
+    uservemail: str
+    useravatar: str
+    userappetite: float
+    userflavor: list[str]
 
 
 class UserAuth(UserBase):
     """
     userid int
     username str
-    email str
-    avatar str
-    appetite float
-    flavor list(str)
-    password str
+    useremail str
+    useravatar str
+    userappetite float
+    userflavor list(str)
+    user_password str
     """
-    password: str
+    user_password: str
 
 
 class UserLogin(BaseModel):
     """
     username: str
-    password: str
+    user_password: str
     """
     username: str
-    password: str
+    user_password: str
 
 
 class UserRegister(BaseModel):
     """
     username: str
-    email: str
-    password: str
+    useremail: str
+    user_password: str
     """
     username: str
-    email: str
-    password: str
+    useremail: str
+    user_password: str
 
 
 class UserInfo(BaseModel):
     """
     username str|None
-    email str|None
-    avatar str|None
-    appetite float|None
-    flavor list(str)|None
+    useremail str|None
+    useravatar str|None
+    userappetite float|None
+    userflavor list(str)|None
     可以选择更改部分用户信息
     """
     username: Union[str, None]
-    email: Union[str, None]
-    avatar: Union[str, None]
-    appetite: Union[float, None]
-    flavor: Union[list[str], None]
+    useremail: Union[str, None]
+    useravatar: Union[str, None]
+    userappetite: Union[float, None]
+    userflavor: Union[list[str], None]
 
 
 class LoginResponse(BaseResponse):
@@ -101,7 +101,7 @@ class LoginResponse(BaseResponse):
         token: str
     }
     """
-    data: Token
+    data: Union[Token, None]
 
 
 class RegisterResponse(BaseResponse):
@@ -119,13 +119,13 @@ class InfoResponse(BaseResponse):
     message: str
     data: {
         username: str
-        email: str
-        avatar: str
-        appetite: float
-        flavor: list[string]
+        useremail: str
+        useravatar: str
+        userappetite: float
+        userflavor: list[string]
     }
     """
-    data: Union[UserInfo,None]
+    data: Union[UserInfo, None]
 
 
 class DishesBase(BaseModel):
