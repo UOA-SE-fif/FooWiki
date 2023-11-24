@@ -9,6 +9,7 @@ import {DishesCard} from "@/components/DishesCard";
 import {People1} from "@/components/People1";
 import {NavBar} from "@/components/NavBar";
 import {List} from "@/components/List";
+import {useEffect} from 'react';
 import React from "react";
 
 
@@ -49,8 +50,11 @@ export async function getServerSideProps(context) {
             }
         };
     } catch (error) {
+        const userData = {}
         return {
-            props: {}
+            props: {
+                userData
+            }
         };
     }
 }
@@ -58,7 +62,7 @@ export async function getServerSideProps(context) {
 const HomePage = ({screenWidth, screenHeight, userData, fooWikiCookie}) => {
     if (screenWidth <= changeWidth) {
         return (
-            <div className="container-fluid h-100" style={{height:"25vh"}}>
+            <div className="container-fluid h-100" style={{height: "25vh"}}>
                 <NavBar linkAdress="/login" userData={userData}></NavBar>
                 <div className="row mt-4 mx-auto d-flex justify-content-center">
                     <div className="row h-25">
@@ -68,40 +72,40 @@ const HomePage = ({screenWidth, screenHeight, userData, fooWikiCookie}) => {
                                 <div className="foowikiFont mt-2">Xiyuan</div>
                                 <div className="row mt-2 mb-2">
                                     <div className="col-6">
-                                        <div style={{paddingLeft:"10px"}}>1st Floor</div>
+                                        <div style={{paddingLeft: "10px"}}>1st Floor</div>
                                     </div>
                                     <div className="col-6">
-                                    <People1 className="people"/>
-                                    <People1 className="people-1"/>
-                                </div>
+                                        <People1 className="people"/>
+                                        <People1 className="people-1"/>
+                                    </div>
                                 </div>
                                 <div className="row mt-2 mb-2">
                                     <div className="col-6">
-                                        <div style={{paddingLeft:"10px"}}>2nd Floor</div>
+                                        <div style={{paddingLeft: "10px"}}>2nd Floor</div>
                                     </div>
                                     <div className="col-6">
-                                    <People1 className="people-1-instance"/>
-                                    <People1 className="people"/>
-                                    <People1 className="people-1"/>
-                                </div>
+                                        <People1 className="people-1-instance"/>
+                                        <People1 className="people"/>
+                                        <People1 className="people-1"/>
+                                    </div>
                                 </div>
                                 <div className="row mt-2 mb-2">
                                     <div className="col-6">
-                                        <div style={{paddingLeft:"10px"}}>3rd Floor</div>
+                                        <div style={{paddingLeft: "10px"}}>3rd Floor</div>
                                     </div>
                                     <div className="col-6">
-                                    <People1 className="people-2"/>
-                                    <People1 className="people-1-instance"/>
-                                    <People1 className="people"/>
-                                    <People1 className="people-1"/>
-                                </div>
+                                        <People1 className="people-2"/>
+                                        <People1 className="people-1-instance"/>
+                                        <People1 className="people"/>
+                                        <People1 className="people-1"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="row h-25">
                         <Title text="Recommendation"></Title>
-                        <div className="" style={{height:"50px"}}>
+                        <div className="" style={{height: "50px"}}>
                             <text className="foowikiFont">login to read more</text>
                         </div>
                     </div>
@@ -130,7 +134,7 @@ const HomePage = ({screenWidth, screenHeight, userData, fooWikiCookie}) => {
 }
 
 
-export default function Home({fooWikiCookie, userData}) {
+export default function Home({fooWikiCookie,userData}) {
     const screenSize = useScreenSize();
     return <HomePage screenHeight={screenSize.height} screenWidth={screenSize.width} userData={userData}
                      fooWikiCookie={fooWikiCookie}></HomePage>
