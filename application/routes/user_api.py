@@ -2,71 +2,14 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from jose import JWTError, jwt
 from sqlalchemy.orm import Session
-
-from ..core import create_access_token, settings
+from typing import Annotated, Union
+from ..core import create_access_token, get_current_user
 from ..orm import schemas
 from ..orm import register_user, login_user, authenticate_user, get_user, change_user_data
 
 from ..orm.database import get_db
 
 router_user = APIRouter()
-
-
-@router_user.post('/token', response_model=schemas.Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
-    """
-    创建token的路由
-    @param form_data: 用于创建token时使用的表单
-        username: str
-        password: str
-    @param db: 路由传回的当前会话的db，获取数据库链接
-    @return: Token
-        token: str
-    """
-    user = authenticate_user(form_data.username, form_data.password, db)
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
-        )
-    access_token = create_access_token(
-        data={"sub": user.username}
-    )
-    return schemas.Token(token=access_token)
-
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
-
-
-def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
-    """
-    通过token获取当前的用户
-    @param token: str JWT令牌
-    @param db: 路由传回的当前会话的db，获取数据库链接
-    @return: UserAuth 当前用户的信息
-        userid int
-        username str
-        useremail str
-        useravatar str
-        userappetite float
-        userflavor list(str)
-        user_password str
-    """
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials"
-    )
-    try:
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=settings.ALGORITHM)
-        username: str = payload.get("sub")
-        if username is None:
-            raise credentials_exception
-    except JWTError:
-        raise credentials_exception
-    user = get_user(username=username, db=db)
-    if user is None:
-        raise credentials_exception
-    return user
 
 
 @router_user.post('/register', response_model=schemas.RegisterResponse)
@@ -96,8 +39,9 @@ async def register(schema: schemas.UserRegister, db: Session = Depends(get_db)):
     return response
 
 
-@router_user.put('/login', response_model=schemas.LoginResponse)
-async def login(schema: schemas.UserLogin, db: Session = Depends(get_db)):
+@router_user.post('/token', response_model=schemas.LoginResponse)
+async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
+                db: Session = Depends(get_db)):
     """
     登录账号的路由
     @param schema: UserLogin
@@ -109,16 +53,16 @@ async def login(schema: schemas.UserLogin, db: Session = Depends(get_db)):
         message: str
         data: Token
     """
-    username = schema.username
-    password = schema.user_password
-    code = login_user(username=username, password=password, db=db)
+    username = form_data.username
+    password = form_data.password
+    code = await login_user(username=username, password=password, db=db)
     if code == 0:
         form_data = OAuth2PasswordRequestForm(
             username=username,
             password=password
         )
-        token = await login_for_access_token(form_data=form_data, db=db)
-        access_token = token.token
+        token = await create_access_token(data={"username": form_data.username})
+        access_token = token
         response = schemas.LoginResponse(
             code=code,
             message='operation success',
