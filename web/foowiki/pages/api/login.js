@@ -3,18 +3,18 @@ export default async function handler(req,res){
     const remoteURL = "http://175.178.154.171:5000"
     const URL = localURL
 
-    console.log(typeof req.body)
+    console.log(req.body)
+    const formData = new FormData()
+    formData.append('username',req.body.username)
+    formData.append('password',req.body.password)
 
-    const data = await fetch(`${URL}/login`, {
-            method: "PUT",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(req.body)
+    const data = await fetch(`${URL}/token`, {
+            method: "POST",
+            body: formData
         })
-    const token = (await data.json()).data.token
+    const token = (await data.json()).token
     console.log(token)
     res.setHeader('Set-Cookie','fooWikiAuth='+token+'; Path=/; HttpOnly');
 
-    res.status(200).json(data)
+    res.status(data.status).json(data)
 }

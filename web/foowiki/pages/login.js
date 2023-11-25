@@ -16,21 +16,20 @@ export default function Login() {
             return
         }
 
-        let data = {
-            "username": username.current.value,
-            "user_password": password.current.value
-        }
+        let data = new FormData()
+        data.append('username',username.current.value)
+        data.append('password',password.current.value)
 
         const response = await fetch(`/api/login`, {
             method: "POST",
             headers: {
-                "Content-type": "application/json"
+                'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: JSON.stringify(data)
+            body: new URLSearchParams(data).toString()
             })
         if(response.ok){
             alert("登录成功")
-            window.location='/dishes'
+            // window.location='/dishes'
         }else{
             alert("登录失败")
         }
