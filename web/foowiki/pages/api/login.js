@@ -12,7 +12,9 @@ export default async function handler(req,res){
             },
             body: JSON.stringify(req.body)
         })
-    const token = (await data.json()).data.token
+
+    let token = (await data.json()).token
+    if(!token)token = ""
     console.log(token)
     res.setHeader('Set-Cookie','fooWikiAuth='+token+'; Path=/; HttpOnly');
 
