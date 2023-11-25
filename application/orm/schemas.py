@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings
-from typing import Union
+from typing import Union, Any
 
 
 class BaseConfig(BaseSettings):
@@ -100,7 +100,7 @@ class LoginResponse(BaseResponse):
         token: str
     }
     """
-    data: Union[Token, None]
+    data: Union[Token, Any]
 
 
 class RegisterResponse(BaseResponse):
