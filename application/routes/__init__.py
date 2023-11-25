@@ -3,6 +3,6 @@ from .dishes_api import router_dish
 
 
 def register_routes(app):
-    app.include_router(router_user)
-    app.include_router(router_dish)
+    app.include_router(router_user, prefix='/api')
+    app.include_router(router_dish, prefix='/api')
 
