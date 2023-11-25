@@ -21,6 +21,28 @@ describe('index test', () => {
         cy.url().should('include','/register')
       })
     })
+    it('test the login status',() =>{
+      let username = 'csf111'
+      let password = '123456'
+      cy.visit('http://127.0.0.1:3000')
+      cy.get('a[href="/login"]').click().then(() =>{
+        cy.get('input[name*="Username"]').type(username)
+        cy.get('input[name*="Password"]').type(password)
+        cy.get('button[type*="submit"]').click().then(()=>{
+
+          cy.on('window:alert',(message) => {
+            expect(message).to.equal('登录成功')
+
+            cy.window().then((win) => {
+              win.alert = () => true
+            })
+          })
+
+          cy.visit('http://127.0.0.1:3000/')
+          cy.contains(username).should('exist')
+        })
+      })
+    })
   })
 
   context('iphone', () => {
