@@ -6,7 +6,7 @@ router_dish = APIRouter()
 
 
 # Todo: 使用orm.database.get_db()获取数据库连接
-@router_dish.get('/dishesInfo')
+@router_dish.get('/dishes')
 async def get_dishes():
     dishes_list = get_dish()
     print(dishes_list)

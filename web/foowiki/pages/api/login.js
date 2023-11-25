@@ -10,14 +10,14 @@ export default async function handler(req,res){
     formData.append('username',req.body.username)
     formData.append('password',req.body.password)
 
-    const data = await fetch(`${URL}/token`, {
+    const data = await fetch(`${URL}/api/v1/user/token`, {
             method: "POST",
             body: formData
         })
-    const detial = await data.json()
-    const token = detial.data.token
+    const detail = await data.json()
+    const token = detail.data.token
     console.log(token)
     res.setHeader('Set-Cookie','fooWikiAuth='+token+'; Path=/; HttpOnly');
 
-    res.status(data.status).json({code:detial.code})
+    res.status(data.status).json({code:detail.code})
 }
