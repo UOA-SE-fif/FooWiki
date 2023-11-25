@@ -156,6 +156,52 @@ class DishesBase(BaseModel):
     # type: str
 
 
+class DishEstablish(BaseModel):
+    """
+    dishname: str
+    pic: Union[str, None]
+    describe: str
+    price: float
+    shopname: str
+    floor: int
+    flavor: Union[list[str], None]
+    satiety: Union[int, None]
+    vegetables: Union[int, None]
+    meat: Union[int, None]
+    """
+    dishname: str
+    pic: Union[str, None]
+    describe: str = ""
+    price: float
+    shopname: str
+    floor: int
+    flavor: Union[list[str], None]
+    satiety: Union[int, None]
+    vegetables: Union[int, None]
+    meat: Union[int, None]
+
+
+class DishUpdate(DishEstablish):
+    """
+    dishid: int
+    dishname: str
+    pic: Union[str, None]
+    describe: Union[str, None]
+    price: Union[float, None]
+    shopname: Union[str, None]
+    floor: Union[int, None]
+    flavor: Union[list[str], None]
+    satiety: Union[int, None]
+    vegetables: Union[int, None]
+    meat: Union[int, None]
+    """
+    dishid: int
+    describe: Union[str, None]
+    price: Union[float, None]
+    shopname: Union[str, None]
+    floor: Union[int, None]
+
+
 class DishesResponse(BaseResponse):
     """
     code: int
