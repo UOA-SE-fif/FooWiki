@@ -37,7 +37,7 @@ def register_user(username: str, email: str, password: str, db: Session):
         return 202
 
 
-def login_user(username: str, password: str, db: Session):
+async def login_user(username: str, password: str, db: Session):
     """
     用户登录账户
     @param username: str, 用户账户名
@@ -103,7 +103,7 @@ def change_user_data(
         return 202
 
 
-def get_user(username: str, db: Session):
+async def get_user(username: str, db: Session):
     """
     根据用户名获取用户
     @param username: str, 待查用户名
