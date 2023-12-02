@@ -1,12 +1,11 @@
 import hashlib
 from sqlalchemy.orm import Session
-
 from application.orm import models
 
 
 def register_user(username: str, email: str, password: str, db: Session):
     """
-    用户注册账号
+    当用户注册账号时，将会调用此函数。
     @param username: str, 用户账户名
     @param email: str, 用户邮箱号
     @param password: str, 用户密码
@@ -39,7 +38,7 @@ def register_user(username: str, email: str, password: str, db: Session):
 
 async def login_user(username: str, password: str, db: Session):
     """
-    用户登录账户
+    当用户登录账户时，将调用此函数。
     @param username: str, 用户账户名
     @param password: str, 用户密码
     @param db: Session, router传入的db，用于链接数据库
@@ -68,7 +67,7 @@ def change_user_data(
         db: Session
 ):
     """
-    修改用户信息
+    当用户的信息需要变更时，调用此函数。
     @param username_origin: str, 用户原账户名
     @param username: str, 用户账户名
     @param email: str, 用户邮箱号
@@ -80,7 +79,7 @@ def change_user_data(
              201 邮箱/用户名已经注册
              202 其他错误
     """
-    user = get_user(username_origin,db)
+    user = get_user(username_origin, db)
     if db.query(models.UserAuth).filter(models.UserAuth.username == username).first():
         return 201
     if db.query(models.UserAuth).filter(models.UserAuth.useremail == email).first():
@@ -105,7 +104,7 @@ def change_user_data(
 
 async def get_user(username: str, db: Session):
     """
-    根据用户名获取用户
+    此函数用户实现“根据用户名获取用户”的功能。
     @param username: str, 待查用户名
     @param db: Session, router传入的db，用于链接数据库
     @return: UserAuth, 查找到的用户
@@ -116,11 +115,12 @@ async def get_user(username: str, db: Session):
 
 def authenticate_user(username: str, password: str, db: Session):
     """
-    用户鉴权
+    当用户需要鉴权时，调用此函数。
     @param username: str, 用户账户名
     @param password: str, 用户密码
     @param db: Session, router传入的db，用于链接数据库
     @return: UserAuth, 鉴权后确定可以返回的用户信息
+             False, 鉴权后不可返回用户信息
     """
     password = hashlib.sha256(password.encode("utf-8")).hexdigest()
     user = get_user(username=username, db=db)
@@ -130,8 +130,3 @@ def authenticate_user(username: str, password: str, db: Session):
     if not user.user_password == password:
         return False
     return user
-
-
-
-
-

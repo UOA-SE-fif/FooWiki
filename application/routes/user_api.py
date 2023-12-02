@@ -1,12 +1,15 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
-from jose import JWTError, jwt
+from fastapi import APIRouter, Depends
+# from fastapi import HTTPException, status
+from fastapi.security import OAuth2PasswordRequestForm
+# from fastapi.security import OAuth2PasswordBearer
+# from jose import JWTError, jwt
 from sqlalchemy.orm import Session
-from typing import Annotated, Union
+from typing import Annotated
+# from typing import Union
 from ..core import create_access_token, get_current_user
 from ..orm import schemas
-from ..orm import register_user, login_user, authenticate_user, get_user, change_user_data
-
+from ..orm import register_user, login_user, get_user, change_user_data
+# from ..orm import authenticate_user
 from ..orm.database import get_db
 
 router_user = APIRouter()
@@ -44,7 +47,7 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
                 db: Session = Depends(get_db)):
     """
     登录账号的路由
-    @param schema: UserLogin
+    @param form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
         username: str
         user_password: str
     @param db: 路由传回的当前会话的db，获取数据库链接
@@ -122,11 +125,11 @@ async def info_post(schema: schemas.UserInfo,
     修改用户的信息
     @param user: 从前端Header获取的当前用户信息
     @param schema: UserInfo 修改后的用户信息
-        username str
-        useremail str
-        useravatar str
-        userappetite float
-        userflavor list(str)
+        username: str
+        useremail: str
+        useravatar: str
+        userappetite: float
+        userflavor: list(str)
     @param db: 路由传回的当前会话的db，获取数据库链接
     @return: InfoResponse 修改后的用户所有信息
         code: int

@@ -29,7 +29,6 @@ class UserBase(Base):  # 用户基本信息
     useremail = Column(String(100), nullable=False, unique=True)
     useravatar = Column(String(255))
     userappetite = Column(Float)
-    # userflavor = Column(ARRAY(String))
     userflavor = Column(JSON)
 
 
@@ -76,7 +75,6 @@ class DishesBase(Base):  # 菜品基本信息
     price = Column(Float, nullable=False)
     shopname = Column(String(100), nullable=False)
     floor = Column(Integer, nullable=False)
-    # flavor = Column(ARRAY(String))
     flavor = Column(JSON)
     satiety = Column(Integer, nullable=False)
     vegetables = Column(Integer, nullable=False)

@@ -1,4 +1,4 @@
-import os
+# import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routes import register_routes
@@ -6,7 +6,7 @@ from .config import config_dict
 from .orm.database import Base, engine
 
 
-def create_app(test_config=None):
+def create_app():
     # create and configure the app
     app = FastAPI()
 
