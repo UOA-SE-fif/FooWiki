@@ -5,7 +5,7 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 
 import React from "react";
 
-export const List2 = ({ className }) => {
+export const List2 = ({ className}) => {
   return (
     <svg
       className={`list-2 ${className}`}

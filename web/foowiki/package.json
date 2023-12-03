@@ -20,6 +20,7 @@
     "sass": "^1.69.0"
   },
   "devDependencies": {
+    "@types/react": "18.2.41",
     "autoprefixer": "^10",
     "cypress": "^13.6.0",
     "eslint": "^8",
