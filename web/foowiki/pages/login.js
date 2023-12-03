@@ -27,9 +27,13 @@ export default function Login() {
             },
             body: new URLSearchParams(data).toString()
             })
-        if(response.ok){
+        const resData = await response.json()
+        console.log(resData)
+        if(resData.code==0){
             alert("登录成功")
-            // window.location='/dishes'
+            window.location='/dishes'
+        }else if(resData.code==203){
+            alert("用户名和密码错误")
         }else{
             alert("登录失败")
         }

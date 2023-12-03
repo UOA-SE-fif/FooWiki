@@ -21,7 +21,7 @@ const useScreenSize = () => {
     handleResize();
 
     // 添加窗口大小变化事件监听器
-    //window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
 
     // 在组件卸载时清除事件监听器，防止内存泄漏
     return () => {

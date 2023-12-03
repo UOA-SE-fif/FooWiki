@@ -26,6 +26,9 @@ let root
 const localURL = "http://127.0.0.1:5000"
 const remoteURL = "http://175.178.154.171:5000"
 const URL = localURL
+
+const v1DishesApi = `${URL}/api/v1/dishes`
+const v1UserApi = `${URL}/api/v1/user/{api}`
 //菜品信息
 let dishesInfo = null
 
@@ -33,7 +36,7 @@ let dishesInfo = null
 export async function getServerSideProps(context) {
     try {
         // 向后端请求
-        const res = await fetch(URL + "/dishesInfo");
+        const res = await fetch(v1DishesApi);
         const data = await res.json();
 
         const headerCookies = context.req.headers.cookie
@@ -45,7 +48,7 @@ export async function getServerSideProps(context) {
         },{}):{}
         const fooWikiCookie = Cookies['fooWikiAuth']?Cookies['fooWikiAuth']:null
 
-        const userRes = await fetch(`${URL}/info`,{
+        const userRes = await fetch(v1UserApi.replace("{api}","info"),{
         method:"GET",
         credentials: 'include',
         headers:{

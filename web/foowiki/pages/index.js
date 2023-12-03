@@ -19,7 +19,9 @@ const changeWidth = 500
 const localURL = "http://127.0.0.1:5000"
 const remoteURL = ""
 const URL = localURL
+const apiVision = "v1"
 
+const v1UserApi = `${URL}/api/v1/user/{api}`
 
 export async function getServerSideProps(context) {
     try {
@@ -33,7 +35,7 @@ export async function getServerSideProps(context) {
         }, {}) : {}
         const fooWikiCookie = Cookies['fooWikiAuth'] ? Cookies['fooWikiAuth'] : null
 
-        const userRes = await fetch(`${URL}/info`, {
+        const userRes = await fetch(v1UserApi.replace("{api}","info"), {
             method: "GET",
             credentials: 'include',
             headers: {
