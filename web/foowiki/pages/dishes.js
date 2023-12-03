@@ -3,16 +3,16 @@ import {createRoot} from "react-dom/client"
 import {redirect} from "next/navigation";
 import "./scss/dishes.css"
 
-import Container from "@/components/container";
-import PCSelector from "@/components/dropdown_selector";
-import {Selector} from "@/components/Selector" ;
-import Nav_bar from "@/components/nav_bar";
-import {Title} from "@/components/Title";
-import {NavBar} from "@/components/NavBar";
-import {DishesCard} from "@/components/DishesCard";
+import Container from "../components/container";
+import PCSelector from "../components/dropdown_selector";
+import {Selector} from "../components/Selector" ;
+import Nav_bar from "../components/nav_bar";
+import {Title} from "../components/Title";
+import {NavBar} from "../components/NavBar";
+import {DishesCard} from "../components/DishesCard";
 
-import useScreenSize from "@/Hook/useScreenSize";
-import disableScroll from "@/Hook/disableScroll";
+import useScreenSize from "../Hook/useScreenSize";
+import disableScroll from "../Hook/disableScroll";
 
 //屏幕改变的阈值
 const changeSize = 500
