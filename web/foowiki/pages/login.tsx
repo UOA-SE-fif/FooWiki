@@ -31,7 +31,7 @@ async function login() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: new URLSearchParams(data).toString()
+        body: new URLSearchParams(data as any).toString()
     })
     const resData = await response.json()
     console.log(resData)
