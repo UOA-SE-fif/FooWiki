@@ -130,22 +130,22 @@ const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) =>
                         <Title text="Floor"/>
                         <Selector className="selector-2" onChange={() => {
                             change(screenHeight, screenWidth)
-                        }} options={floors} name="Floor" id="floor" defaultValue="Null"/>
+                        }} options={floors} name="楼层" id="floor" defaultValue="Null"/>
                         <Title className="" text="Sellers"/>
                         <Selector className="selector-instance" onChange={() => {
                             change(screenHeight, screenWidth)
-                        }} options={shops} name="Seller" id="shop" defaultValue="seller name"/>
+                        }} options={shops} name="商家" id="shop" defaultValue="seller name"/>
                         <Title className="" text="Price"/>
-                        <div className="row">
-                            <div className="foowikiFont">
+                        <div className="row  justify-content-center align-items-center text-center">
+                            <div className="foowikiFont col-5">
                                 <input className="form-control input" type="number" name="priceLeft" id="priceLeft"
                                        placeholder="Low Price"
                                        onChange={() => {
                                            change(screenHeight, screenWidth)
                                        }}></input>
                             </div>
-                            <div className="foowikiFont" style={{fontSize:"40px"}}>~</div>
-                            <div className="foowikiFont">
+                            <div className="foowikiFont col-2" style={{fontSize:"40px"}}>~</div>
+                            <div className="foowikiFont col-5">
                                 <input className="form-control input" type="number" name="priceRight" id="priceRight"
                                        placeholder="High Price"
                                        onChange={() => {
@@ -176,21 +176,21 @@ const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) =>
                 <Nav_bar user={userData}></Nav_bar>
                 <Container>
                     <div className="row">
-                        <PCSelector name="Floor" options={floors} onChange={() => {
+                        <PCSelector name="楼层" options={floors} onChange={() => {
                             change(screenHeight, screenWidth)
                         }} id={"floor"}/>
-                        <PCSelector name="Sellers" options={shops} onChange={() => {
+                        <PCSelector name="商家" options={shops} onChange={() => {
                             change(screenHeight, screenWidth)
                         }} id={"shop"}/>
                         <div className="col-2 flex">
-                            <label htmlFor="price">Price</label>
+                            <label htmlFor="price">价格</label>
                             <input className="form-control" type="number" name="priceLeft" id="priceLeft"
-                                   placeholder="Low Price"
+                                   placeholder="最低价格"
                                    onChange={() => {
                                        change(screenHeight, screenWidth)
                                    }}></input>
                             <input className="form-control" type="number" name="priceRight" id="priceRight"
-                                   placeholder="High Price"
+                                   placeholder="最高价格"
                                    onChange={() => {
                                        change(screenHeight, screenWidth)
                                    }}></input>
@@ -201,11 +201,11 @@ const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) =>
                         <table className="table">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Describe</th>
-                                <th>Price</th>
-                                <th>Seller</th>
-                                <th>Floor</th>
+                                <th>菜品名称</th>
+                                <th>描述</th>
+                                <th>价格</th>
+                                <th>商家</th>
+                                <th>楼层</th>
                             </tr>
                             </thead>
                             <tbody id="dishesInfo">
