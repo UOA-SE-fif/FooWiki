@@ -4,8 +4,8 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 */
 
 import React from "react";
-import {List2} from "@/components/List2";
-import {Search} from "@/components/Search";
+import {List2} from "../List2";
+import {Search} from "../Search";
 import "./style.css";
 import Link from "next/link";
 

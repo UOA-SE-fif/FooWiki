@@ -3,12 +3,10 @@ import Container from '../components/container'
 import Nav_bar from "../components/nav_bar";
 import styles from "./scss/index.scss"
 import useScreenSize from '../Hook/useScreenSize'
-import {Title} from "@/components/Title";
-import {CommentCard} from "@/components/CommentCard";
-import {DishesCard} from "@/components/DishesCard";
-import {People1} from "@/components/People1";
-import {NavBar} from "@/components/NavBar";
-import {List} from "@/components/List";
+import {Title} from "../components/Title";
+import {CommentCard} from "../components/CommentCard";
+import {People1} from "../components/People1";
+import {NavBar} from "../components/NavBar";
 import {useEffect} from 'react';
 import React from "react";
 

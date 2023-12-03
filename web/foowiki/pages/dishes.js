@@ -3,16 +3,16 @@ import {createRoot} from "react-dom/client"
 import {redirect} from "next/navigation";
 import "./scss/dishes.css"
 
-import Container from "@/components/container";
-import PCSelector from "@/components/dropdown_selector";
-import {Selector} from "@/components/Selector" ;
-import Nav_bar from "@/components/nav_bar";
-import {Title} from "@/components/Title";
-import {NavBar} from "@/components/NavBar";
-import {DishesCard} from "@/components/DishesCard";
+import Container from "../components/container";
+import PCSelector from "../components/dropdown_selector";
+import {Selector} from "../components/Selector" ;
+import Nav_bar from "../components/nav_bar";
+import {Title} from "../components/Title";
+import {NavBar} from "../components/NavBar";
+import {DishesCard} from "../components/DishesCard";
 
-import useScreenSize from "@/Hook/useScreenSize";
-import disableScroll from "@/Hook/disableScroll";
+import useScreenSize from "../Hook/useScreenSize";
+import disableScroll from "../Hook/disableScroll";
 
 //屏幕改变的阈值
 const changeSize = 500
@@ -130,22 +130,22 @@ const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) =>
                         <Title text="Floor"/>
                         <Selector className="selector-2" onChange={() => {
                             change(screenHeight, screenWidth)
-                        }} options={floors} name="楼层" id="floor" defaultValue="Null"/>
+                        }} options={floors} name="Floor" id="floor" defaultValue="Null"/>
                         <Title className="" text="Sellers"/>
                         <Selector className="selector-instance" onChange={() => {
                             change(screenHeight, screenWidth)
-                        }} options={shops} name="商家" id="shop" defaultValue="seller name"/>
+                        }} options={shops} name="Seller" id="shop" defaultValue="seller name"/>
                         <Title className="" text="Price"/>
-                        <div className="row  justify-content-center align-items-center text-center">
-                            <div className="foowikiFont col-5">
+                        <div className="row">
+                            <div className="foowikiFont">
                                 <input className="form-control input" type="number" name="priceLeft" id="priceLeft"
                                        placeholder="Low Price"
                                        onChange={() => {
                                            change(screenHeight, screenWidth)
                                        }}></input>
                             </div>
-                            <div className="foowikiFont col-2" style={{fontSize:"40px"}}>~</div>
-                            <div className="foowikiFont col-5">
+                            <div className="foowikiFont" style={{fontSize:"40px"}}>~</div>
+                            <div className="foowikiFont">
                                 <input className="form-control input" type="number" name="priceRight" id="priceRight"
                                        placeholder="High Price"
                                        onChange={() => {
@@ -176,21 +176,21 @@ const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) =>
                 <Nav_bar user={userData}></Nav_bar>
                 <Container>
                     <div className="row">
-                        <PCSelector name="楼层" options={floors} onChange={() => {
+                        <PCSelector name="Floor" options={floors} onChange={() => {
                             change(screenHeight, screenWidth)
                         }} id={"floor"}/>
-                        <PCSelector name="商家" options={shops} onChange={() => {
+                        <PCSelector name="Sellers" options={shops} onChange={() => {
                             change(screenHeight, screenWidth)
                         }} id={"shop"}/>
                         <div className="col-2 flex">
-                            <label htmlFor="price">价格</label>
+                            <label htmlFor="price">Price</label>
                             <input className="form-control" type="number" name="priceLeft" id="priceLeft"
-                                   placeholder="最低价格"
+                                   placeholder="Low Price"
                                    onChange={() => {
                                        change(screenHeight, screenWidth)
                                    }}></input>
                             <input className="form-control" type="number" name="priceRight" id="priceRight"
-                                   placeholder="最高价格"
+                                   placeholder="High Price"
                                    onChange={() => {
                                        change(screenHeight, screenWidth)
                                    }}></input>
@@ -201,11 +201,11 @@ const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) =>
                         <table className="table">
                             <thead>
                             <tr>
-                                <th>菜品名称</th>
-                                <th>描述</th>
-                                <th>价格</th>
-                                <th>商家</th>
-                                <th>楼层</th>
+                                <th>Name</th>
+                                <th>Describe</th>
+                                <th>Price</th>
+                                <th>Seller</th>
+                                <th>Floor</th>
                             </tr>
                             </thead>
                             <tbody id="dishesInfo">
