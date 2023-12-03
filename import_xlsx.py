@@ -1,6 +1,6 @@
 import pandas as pd
-from application.core import add_dishes
-from application.models import schemas
+from application.orm.crud.add_dishes import add_dishes
+from application.orm import schemas
 
 
 def import_xlsx():
@@ -18,15 +18,15 @@ def import_xlsx():
             price=row['价格'],
             shopname=row['店铺'],
             floor=row['楼层'],
-            type=row['种类'],
+            # type=row['种类'],
             satiety=row['饱腹感'],
             vegetables=row['蔬菜量'],
-            meat=row['肉量']
+            meat=row['肉量'],
+            pic=row['图片路径'],
+            flavor=[row['口味']]
         ))
         print(row['菜品名称'])
     add_dishes(dishes_list)
-    return True
-
 
 if __name__ == '__main__':
     import_xlsx()

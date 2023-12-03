@@ -1,11 +1,11 @@
-from ...models import models, schemas, SessionLocal
+from sqlalchemy.orm import Session
+from application.orm import models, schemas
 
-db = SessionLocal()
 
-
-def foods_dishes():
+def get_all_dishes(db: Session):
     """
-    :return: 以列表形式返回关于菜品的数据
+    @param db: Session, router传入的db，用于链接数据库
+    @return: 以列表形式返回关于菜品的数据
     """
     dishes = db.query(models.DishesBase).all()
     dish_list = []
@@ -13,11 +13,13 @@ def foods_dishes():
         dish_list.append(schemas.DishesBase(
             dishid=dish.dishid,
             dishname=dish.dishname,
+            pic=dish.pic,
             describe=dish.describe,
             price=dish.price,
             shopname=dish.shopname,
             floor=dish.floor,
-            type=dish.type,
+            flavor=dish.flavor,
+            # type=dish.type,
             satiety=dish.satiety,
             vegetables=dish.vegetables,
             meat=dish.meat

@@ -1,0 +1,54 @@
+.comment-card {
+  background-color: #fff6dfa6;
+  border: 1px solid;
+  border-color: #553d00;
+  border-radius: 8px;
+  box-shadow: 3px 4px 5px #dac693;
+  height: 121px;
+  position: relative;
+  /*width: 366px;*/
+}
+
+.comment-card .div {
+  color: #000000;
+  font-family: "Baloo Paaji 2", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  height: 30px;
+  /*left: 18px;*/
+  letter-spacing: 0.12px;
+  line-height: normal;
+  /*position: absolute;*/
+  /*top: 6px;*/
+  width: 111px;
+}
+
+.comment-card .text-wrapper-2 {
+  color: #000000;
+  font-family: "Baloo Paaji 2", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  height: 30px;
+  /*left: 209px;*/
+  letter-spacing: 0.12px;
+  line-height: normal;
+  /*position: absolute;*/
+  text-align: right;
+  /*top: 6px;*/
+  width: 129px;
+}
+
+.comment-card .text-wrapper-3 {
+  color: #000000;
+  font-family: "Baloo Paaji 2", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  height: 16px;
+  /*left: 18px;*/
+  letter-spacing: 0.08px;
+  line-height: normal;
+  /*position: absolute;*/
+  /*top: 40px;*/
+  white-space: nowrap;
+  width: 180px;
+}

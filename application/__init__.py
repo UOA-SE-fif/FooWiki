@@ -1,15 +1,16 @@
-import os
+# import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routes import register_routes
 from .config import config_dict
 
 
-def create_app(test_config=None):
+def create_app():
     # create and configure the app
     app = FastAPI()
 
     origins = [
+        "http://127.0.0.1:3000",
         "http://localhost:3000"
     ]
     app.add_middleware(
