@@ -11,7 +11,7 @@ export default function Nav_bar({user}) {
     }else {
         userMessage = <form className="d-flex" role="authentication">
             <li className={styles.navbar_btn + " btn btn-outline-success"}>
-                <Link className="nav-link" href="/web/foowiki/pages/register">Sign up</Link>
+                <Link className="nav-link" href="/register">Sign up</Link>
             </li>
             <li className={styles.navbar_btn + " btn btn-outline-success"}>
                 <Link className="nav-link" href="/login">Sign in</Link>

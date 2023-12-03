@@ -51,7 +51,8 @@ export async function getServerSideProps(context) {
     }
 }
 
-const FooWikiUser: NextPage = ({fooWikiCookie, userData}) => {
+// @ts-ignore
+const FooWikiUser: NextPage = ({userData}) => {
     console.log(userData)
     return (
         <div className={styles.foowikiUser}>
