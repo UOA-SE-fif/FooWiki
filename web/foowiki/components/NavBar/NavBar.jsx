@@ -55,8 +55,8 @@ export const NavBar = ({className, icon = <List2 data-bs-toggle="offcanvas"/>, l
                     <div><Link href="/dishes">dishes</Link></div>
                 </div>
             </div>
-            <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
-            <script type="text/javascript" src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+            <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js" async></script>
+            <script type="text/javascript" src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js" async></script>
         </div>
     );
 };
