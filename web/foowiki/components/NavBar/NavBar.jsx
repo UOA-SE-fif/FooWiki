@@ -17,7 +17,7 @@ export const NavBar = ({className, icon = <List2 data-bs-toggle="offcanvas"/>, l
         </div>
     } else {
         userElement = <div className="col-2 offset-1">
-            <a className="user" href={linkAdress}></a>
+            <Link className="user" href={linkAdress}></Link>
         </div>
     }
     return (
