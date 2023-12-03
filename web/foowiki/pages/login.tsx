@@ -12,13 +12,13 @@ import React from "react";
 
 const localURL = "http://127.0.0.1:5000"
 const remoteURL = "http://175.178.154.171:5000"
-const URL = localURL
+const URL = remoteURL
 
 const changeWidth = 500
 
 async function login() {
     if (username.current.value === "" || password.current.value === "") {
-        alert("请输入完整的信息")
+        alert("Please enter full information")
         return
     }
 
@@ -31,12 +31,13 @@ async function login() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: new URLSearchParams(data).toString()
+        body: new URLSearchParams(data as any).toString()
     })
     const resData = await response.json()
     console.log(resData)
     if (resData.code == 0) {
         alert("success")
+        // @ts-ignore
         window.location = '/dishes'
     } else if (resData.code == 203) {
         alert("username or password don't match")
@@ -51,7 +52,7 @@ const Login: NextPage = () => {
         return (
             <div className={styles.foowikiLogin}>
                 <div className="container-fluid">
-                <NavBar userData={{}}></NavBar>
+                <NavBar userData={{}} className={undefined}></NavBar>
                 </div>
                 <div className={styles.login}>
                     <div className={styles.title}>
@@ -91,8 +92,7 @@ const Login: NextPage = () => {
     else
         return (
             <Container>
-                <Form_card cardType={"login"} func={login}>
-                </Form_card>
+                <Form_card cardType={"login"} func={login}/>
                 <Image src={background} alt="background"
                        layout="fill"
                        objectFit="cover"

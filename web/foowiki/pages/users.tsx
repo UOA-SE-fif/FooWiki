@@ -6,8 +6,8 @@ import Link from "next/link";
 import {bootstrap} from "next/dist/build/output/log";
 
 const localURL = "http://127.0.0.1:5000"
-const remoteURL = ""
-const URL = localURL
+const remoteURL = "http://175.178.154.171:5000"
+const URL = remoteURL
 const apiVision = "v1"
 
 const v1UserApi = `${URL}/api/v1/user/{api}`
@@ -51,7 +51,8 @@ export async function getServerSideProps(context) {
     }
 }
 
-const FooWikiUser: NextPage = ({fooWikiCookie, userData}) => {
+// @ts-ignore
+const FooWikiUser: NextPage = ({userData}) => {
     console.log(userData)
     return (
         <div className={styles.foowikiUser}>
