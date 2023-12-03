@@ -132,15 +132,15 @@
   letter-spacing: 0.01em;
   display: flex;
   align-items: center;
-  width: 80px;
+  width: 500px;
   height: 31px;
   flex-shrink: 0;
 }
 .frame2 {
   position: absolute;
   top: 19px;
-  left: 0;
-  width: 100px;
+  left: 20px;
+  width: 500px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -152,15 +152,15 @@
   letter-spacing: 0.01em;
   display: flex;
   align-items: center;
-  width: 90px;
+  width: 500px;
   height: 31px;
   flex-shrink: 0;
 }
 .frame3 {
   position: absolute;
   top: 119px;
-  left: 0;
-  width: 110px;
+  left: 20px;
+  width: 500px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -172,15 +172,15 @@
   letter-spacing: 0.01em;
   display: flex;
   align-items: center;
-  width: 111px;
+  width: 500px;
   height: 31px;
   flex-shrink: 0;
 }
 .frame4 {
   position: absolute;
   top: 69px;
-  left: 0;
-  width: 131px;
+  left: 20px;
+  width: 500px;
   overflow: hidden;
   display: flex;
   flex-direction: column;

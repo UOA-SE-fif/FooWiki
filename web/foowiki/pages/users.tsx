@@ -57,7 +57,7 @@ const FooWikiUser: NextPage = ({fooWikiCookie,userData}) => {
       <div className={styles.foowikiUserChild} />
       <div className={styles.userParent}>
         <img className={styles.userIcon1} alt="" src={userData.data.useravatar} />
-        <div className={styles.username}>UserName</div>
+        <div className={styles.username}>{userData.data.username}</div>
       </div>
       <div className={styles.frameParent}>
         <div className={styles.frame}>
@@ -67,7 +67,7 @@ const FooWikiUser: NextPage = ({fooWikiCookie,userData}) => {
           <div className={styles.frame1}>
             <div className={styles.container} />
             <div className={styles.frame2}>
-              <div className={styles.email}>Email: {userData.data.useremail}</div>
+              <div className={styles.email}>{`Email: ${userData.data.useremail}`}</div>
             </div>
             <div className={styles.frame3}>
               <div className={styles.flavor}>Flavor: {userData.data.userflavor?userData.data.userflavor:"null"}</div>
