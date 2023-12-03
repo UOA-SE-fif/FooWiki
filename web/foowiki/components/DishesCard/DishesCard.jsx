@@ -4,9 +4,9 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 */
 
 import React from "react";
-import {Lettuce} from "@/components/Lettuce";
-import {Meat3} from "@/components/Meat3";
-import {RiceBowl} from "@/components/RiceBowl";
+import {Lettuce} from "../Lettuce";
+import {Meat3} from "../Meat3";
+import {RiceBowl} from "../RiceBowl";
 import "./style.css";
 
 export const DishesCard = ({className, item}) => {

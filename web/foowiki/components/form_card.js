@@ -21,7 +21,7 @@ export default function Form_card({cardType, func}) {
         email_element = <input className="form-control" type="email" name="email" ref={email} placeholder="email"></input>
         changeButton = <a className="btn" type="submit" href="/login">back</a>
     }else{
-        changeButton = <a className="btn" type="submit" href="/register">to register</a>
+        changeButton = <a className="btn" type="submit" href="/web/foowiki/pages/register">to register</a>
     }
     return (
         <div className={cardStyle}>
