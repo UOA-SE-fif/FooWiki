@@ -1,4 +1,5 @@
 import pandas as pd
+from application.orm.database import SessionLocal
 from application.orm.crud.add_dishes import add_dishes
 from application.orm import schemas
 
@@ -26,7 +27,7 @@ def import_xlsx():
             flavor=[row['口味']]
         ))
         print(row['菜品名称'])
-    add_dishes(dishes_list)
+    add_dishes(dishes_list, db=SessionLocal())
 
 if __name__ == '__main__':
     import_xlsx()
