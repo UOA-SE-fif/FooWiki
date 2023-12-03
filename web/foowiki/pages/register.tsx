@@ -72,7 +72,7 @@ const Register: NextPage = () => {
         return (
             <div className={styles.foowikiLogin}>
                 <div className="container-fluid">
-                    <NavBar userData={{}}></NavBar>
+                    <NavBar userData={{}} className={undefined}></NavBar>
                 </div>
                 <div className={styles.register}>
                     <div className={styles.title}>
@@ -128,8 +128,7 @@ const Register: NextPage = () => {
     else
         return (
             <Container>
-                <Form_card cardType={"register"} func={register}>
-                </Form_card>
+                <Form_card cardType={"register"} func={register}/>
                 <Image src={background} alt="background"
                        fill
                        quality={100}

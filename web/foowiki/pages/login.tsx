@@ -37,6 +37,7 @@ async function login() {
     console.log(resData)
     if (resData.code == 0) {
         alert("success")
+        // @ts-ignore
         window.location = '/dishes'
     } else if (resData.code == 203) {
         alert("username or password don't match")
@@ -51,7 +52,7 @@ const Login: NextPage = () => {
         return (
             <div className={styles.foowikiLogin}>
                 <div className="container-fluid">
-                <NavBar userData={{}}></NavBar>
+                <NavBar userData={{}} className={undefined}></NavBar>
                 </div>
                 <div className={styles.login}>
                     <div className={styles.title}>
@@ -91,8 +92,7 @@ const Login: NextPage = () => {
     else
         return (
             <Container>
-                <Form_card cardType={"login"} func={login}>
-                </Form_card>
+                <Form_card cardType={"login"} func={login}/>
                 <Image src={background} alt="background"
                        layout="fill"
                        objectFit="cover"
