@@ -12,13 +12,13 @@ import React from "react";
 
 const localURL = "http://127.0.0.1:5000"
 const remoteURL = "http://175.178.154.171:5000"
-const URL = localURL
+const URL = remoteURL
 
 const changeWidth = 500
 
 async function login() {
     if (username.current.value === "" || password.current.value === "") {
-        alert("请输入完整的信息")
+        alert("Please enter full information")
         return
     }
 

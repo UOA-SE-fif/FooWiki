@@ -15,8 +15,8 @@ import React from "react";
 const changeWidth = 500
 //url
 const localURL = "http://127.0.0.1:5000"
-const remoteURL = ""
-const URL = localURL
+const remoteURL = "http://175.178.154.171:5000"
+const URL = remoteURL
 const apiVision = "v1"
 
 const v1UserApi = `${URL}/api/v1/user/{api}`

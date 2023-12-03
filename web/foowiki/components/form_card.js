@@ -1,5 +1,6 @@
 import styles from './form_card.module.scss'
 import {createRef} from "react";
+import Link from "next/link";
 
 
 export let username = createRef()
@@ -19,9 +20,9 @@ export default function Form_card({cardType, func}) {
         confirm_element = <input className="form-control" type="password" name="ConfirmPassword"
                                  id="confirmPassword" placeholder="Confirm Password" ref={confirm_password}></input>
         email_element = <input className="form-control" type="email" name="email" ref={email} placeholder="email"></input>
-        changeButton = <a className="btn" type="submit" href="/login">back</a>
+        changeButton = <Link className="btn" type="submit" href="/login">back</Link>
     }else{
-        changeButton = <a className="btn" type="submit" href="/web/foowiki/pages/register">to register</a>
+        changeButton = <Link className="btn" type="submit" href="/web/foowiki/pages/register">to register</Link>
     }
     return (
         <div className={cardStyle}>
