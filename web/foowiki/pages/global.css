@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji:wght@400&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-baloo-paaji: "Baloo Paaji";
+  --font-inter: Inter;
+
+  /* font sizes */
+  --font-size-5xl: 24px;
+
+  /* Colors */
+  --color-black: #000;
+  --color-cornsilk: rgba(255, 246, 223, 0.65);
+  --color-saddlebrown: #553d00;
+  --color-gray: #1e1e1e;
+  --color-goldenrod: rgba(255, 203, 70, 0.35);
+
+  /* Border radiuses */
+  --br-5xs: 8px;
+}
