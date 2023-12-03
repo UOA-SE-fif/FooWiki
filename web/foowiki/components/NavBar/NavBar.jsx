@@ -21,7 +21,7 @@ export const NavBar = ({className, icon = <List2 data-bs-toggle="offcanvas"/>, l
         </div>
     }
     return (
-        <div className="container-fluid">
+        <div>
             <nav className={`nav-bar row d-flex flex-wrap align-items-center ${className}`}>
                 <div className="col-9">
                     <div className="row d-flex flex-wrap align-items-center">
