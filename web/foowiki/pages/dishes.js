@@ -25,7 +25,7 @@ let root
 //后端地址
 const localURL = "http://127.0.0.1:5000"
 const remoteURL = "http://175.178.154.171:5000"
-const URL = localURL
+const URL = remoteURL
 
 const v1DishesApi = `${URL}/api/v1/dishes`
 const v1UserApi = `${URL}/api/v1/user/{api}`
