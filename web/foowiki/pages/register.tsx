@@ -120,7 +120,9 @@ const Register: NextPage = () => {
                         <div className={styles.login1} onClick={register}>register</div>
                     </button>
                 </div>
-                <Link href="/login" className={styles.createOne}>To Login</Link>
+                <div style={{marginTop:"40px",marginRight:"65px"}}>
+                    <Link href="/login" className={styles.createOne}>To Login</Link>
+                </div>
             </div>
         )
     else
