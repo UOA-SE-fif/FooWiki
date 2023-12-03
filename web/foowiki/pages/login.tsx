@@ -18,7 +18,7 @@ const changeWidth = 500
 
 async function login() {
     if (username.current.value === "" || password.current.value === "") {
-        alert("请输入完整的信息")
+        alert("Please enter full information")
         return
     }
 

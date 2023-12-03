@@ -2,7 +2,7 @@ import React, {createRef} from "react"
 import {createRoot} from "react-dom/client"
 import {redirect} from "next/navigation";
 import "./scss/dishes.css"
-
+import Image from "next/image";
 import Container from "../components/container";
 import PCSelector from "../components/dropdown_selector";
 import {Selector} from "../components/Selector" ;
@@ -113,6 +113,7 @@ const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) =>
     } else {
         dishesInfo = dishes.map((item, index) => {
             return (
+                // eslint-disable-next-line react/jsx-key
                 <div className="row mb-2">
                     <DishesCard item={item} className=""></DishesCard>
                 </div>
@@ -157,8 +158,8 @@ const DishesPage = ({screenWidth, screenHeight, data,userData,fooWikiCookie}) =>
                             <div className="col-12">
                                 <div className="more mb-0">more</div>
                                 <div className="">
-                                    <img className="arrowhead" alt="Line" src="/img/line-2.svg"/>
-                                    <img className="arrowhead" alt="Line" src="/img/line-3-3.svg"/>
+                                    <Image className="arrowhead" alt="Line" src="/img/line-2.svg" width={10} height={2}/>
+                                    <Image className="arrowhead" alt="Line" src="/img/line-3-3.svg" width={10} height={2}/>
                                 </div>
                             </div>
                         </div>
