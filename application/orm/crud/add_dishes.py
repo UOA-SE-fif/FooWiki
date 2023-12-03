@@ -1,4 +1,4 @@
-from flask_sqlalchemy.session import Session
+from sqlalchemy.orm import Session
 from application.orm import models, schemas
 
 
